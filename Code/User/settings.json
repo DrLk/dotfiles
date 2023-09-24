@@ -1,0 +1,36 @@
+{
+    "tabnine.experimentalAutoImports": true,
+    "workbench.colorTheme": "Tokyo Night",
+    "editor.fontFamily": "'FiraCode Nerd Font'",
+    "editor.fontSize": 12,
+    "editor.fontLigatures": true,
+    "cmake.configureOnOpen": true,
+    "git.openRepositoryInParentFolders": "always",
+    "window.restoreFullscreen": true,
+    "editor.wordWrap": "on",
+    "window.titleBarStyle": "custom",
+    "vim.foldfix": true,
+    "vim.enableNeovim": true,
+    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+    "vim.neovimPath": "/usr/bin/nvim",
+    "vim.neovimUseConfigFile": true,
+    "window.zoomLevel": 1.3,
+
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "templateType": {
+                "foreground": "#2ac3de"
+            },
+            "type": {
+                "foreground": "#2ac3de"
+            }
+        }
+    },
+    "cmake.generator": "Ninja",
+    "cmake.configureArgs": [
+        "-DCHECK_GLIBC_SYMBOLS_VERSION=OFF",
+        "-DSTATIC_LINK_FUSE=OFF",
+        "-DSTATIC_LINK_ATOMIC=OFF"
+    ],
+    "diffEditor.renderSideBySide": false
+}
