@@ -4,7 +4,6 @@
     "editor.fontFamily": "'FiraCode Nerd Font'",
     "editor.fontSize": 12,
     "editor.fontLigatures": true,
-    "cmake.configureOnOpen": true,
     "git.openRepositoryInParentFolders": "always",
     "window.restoreFullscreen": true,
     "editor.wordWrap": "on",
@@ -14,7 +13,7 @@
     "vim.neovimConfigPath": "~/.config/nvim/init.vim",
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.neovimUseConfigFile": true,
-    "window.zoomLevel": 1.3,
+    "window.zoomLevel": 1.1,
 
     "editor.semanticTokenColorCustomizations": {
         "rules": {
@@ -30,7 +29,11 @@
     "cmake.configureArgs": [
         "-DCHECK_GLIBC_SYMBOLS_VERSION=OFF",
         "-DSTATIC_LINK_FUSE=OFF",
-        "-DSTATIC_LINK_ATOMIC=OFF"
+        "-DSTATIC_LINK_ATOMIC=OFF",
+        "-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=mold",
+        "-DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=mold",
+        "-DCMAKE_MODULE_LINKER_FLAGS=-fuse-ld=mold",
+        //"-DCMAKE_STATIC_LINKER_FLAGS=-fuse-ld=mold"
     ],
     "diffEditor.renderSideBySide": false
 }
