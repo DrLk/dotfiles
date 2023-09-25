@@ -13,7 +13,7 @@
     "vim.neovimConfigPath": "~/.config/nvim/init.vim",
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.neovimUseConfigFile": true,
-    "window.zoomLevel": 1.1,
+    "window.zoomLevel": 1.2,
 
     "editor.semanticTokenColorCustomizations": {
         "rules": {
