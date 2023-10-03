@@ -110,6 +110,9 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
+export GIT_EDITOR=vim
+export EDITOR=vim
+
 if [ -x "$(command -v eza)" ]; then
     alias ls="eza"
     alias la="eza --long --all --group"
@@ -121,9 +124,16 @@ fi
 
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
+    export GIT_EDITOR=nvim
+    export EDITOR=nvim
+fi
+
+if [ -x "$(command -v nnn)" ]; then
+    alias nnn="nnn -dTt"
 fi
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
-export GIT_EDITOR=vim
+export GIT_EDITOR=nvim
+export EDITOR=nvim
 
