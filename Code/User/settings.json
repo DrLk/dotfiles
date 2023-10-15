@@ -35,5 +35,8 @@
         "-DCMAKE_MODULE_LINKER_FLAGS=-fuse-ld=mold",
         //"-DCMAKE_STATIC_LINKER_FLAGS=-fuse-ld=mold"
     ],
-    "diffEditor.renderSideBySide": false
+    "diffEditor.renderSideBySide": false,
+    "workbench.editor.enablePreview": false,
+    "cmake.configureOnOpen": false,
+    "git.autofetch": true
 }
