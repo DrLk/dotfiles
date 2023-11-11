@@ -4,3 +4,6 @@
 [submodule "kitty/kitty-themes"]
 	path = kitty/kitty-themes
 	url = https://github.com/DrLk/tokyo-night-kitty-theme.git
+[submodule "nvim/bundle/Vundle.vim"]
+	path = nvim/bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim.git
