@@ -1,5 +1,4 @@
 {
-    "tabnine.experimentalAutoImports": true,
     "workbench.colorTheme": "Tokyo Night",
     "editor.fontFamily": "'FiraCode Nerd Font'",
     "editor.fontSize": 12,
@@ -25,7 +24,7 @@
             }
         }
     },
-    "cmake.generator": "Ninja",
+    "cmake.generator": "Ninja Multi-Config",
     "cmake.configureArgs": [
         "-DCHECK_GLIBC_SYMBOLS_VERSION=OFF",
         "-DSTATIC_LINK_FUSE=OFF",
@@ -38,5 +37,7 @@
     "diffEditor.renderSideBySide": false,
     "workbench.editor.enablePreview": false,
     "cmake.configureOnOpen": false,
-    "git.autofetch": true
+    "git.autofetch": true,
+    "tabnine.codeLensEnabled": false,
+    "tabnine.experimentalAutoImports": true
 }
