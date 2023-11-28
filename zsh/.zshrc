@@ -134,6 +134,6 @@ fi
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
-export GIT_EDITOR=nvim
-export EDITOR=nvim
-
+unzipall () {
+    pids=(); for z in *.zip; do UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE unzip "$z" -d "${z%.*}" &; pids+=($!); done; for pid in "${pids[@]}"; do wait "${pid}"; done
+}
