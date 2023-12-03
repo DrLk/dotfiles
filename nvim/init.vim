@@ -42,6 +42,9 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 
+" Statusline
+Plugin 'vim-airline/vim-airline'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -193,3 +196,18 @@ set nofoldenable
 
 let g:cpp_class_decl_highlight = 1
 let g:cpp_member_variable_highlight = 1
+
+" FindText
+command -nargs=1 FindText lvimgrep /<args>/ % | lopen | on | res | set filetype=log
+nmap <C-/> :FindText<space>
+
+command -nargs=0 ResizeMainWindow exec 'resize ' . (&lines-26)
+
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>:ResizeMainWindow<CR>
+autocmd BufReadPost quickfix nnoremap <buffer> <c-CR> <CR>:on<CR>:res<CR>
+
+command -nargs=0 OpenFindTextFullScreen lopen | on | set filetype=log
+command -nargs=0 OpenFindTextWindow lopen 23 | set filetype=log
+
+nnoremap <A-n> :OpenFindTextFullScreen<CR>
+nnoremap <C-n> :OpenFindTextWindow<CR>
