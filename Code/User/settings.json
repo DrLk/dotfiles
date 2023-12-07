@@ -3,7 +3,10 @@
     "editor.fontFamily": "'FiraCode Nerd Font'",
     "editor.fontSize": 12,
     "editor.fontLigatures": true,
+    "editor.inlayHints.enabled": "off",
     "git.openRepositoryInParentFolders": "always",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
     "window.restoreFullscreen": true,
     "editor.wordWrap": "on",
     "window.titleBarStyle": "custom",
@@ -37,7 +40,9 @@
     "diffEditor.renderSideBySide": false,
     "workbench.editor.enablePreview": false,
     "cmake.configureOnOpen": false,
-    "git.autofetch": true,
     "tabnine.codeLensEnabled": false,
-    "tabnine.experimentalAutoImports": true
+    "tabnine.experimentalAutoImports": true,
+    "cmake.showOptionsMovedNotification": false,
+
+    "C_Cpp.intelliSenseEngine": "disabled"
 }
