@@ -113,6 +113,10 @@ source $ZSH/oh-my-zsh.sh
 export GIT_EDITOR=vim
 export EDITOR=vim
 
+if [ -x "$(command -v rg)" ]; then
+    alias rg="rg --no-heading"
+fi
+
 if [ -x "$(command -v eza)" ]; then
     alias ls="eza"
     alias la="eza --long --all --group"
