@@ -127,7 +127,7 @@ fi
 
 if [ -x "$(command -v eza)" ]; then
     alias ls="eza"
-    alias la="eza --long --all --group"
+    alias la="eza --long --all --all --group"
 fi
 
 if [ -x "$(command -v bat)" ]; then
