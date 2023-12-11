@@ -113,6 +113,10 @@ source $ZSH/oh-my-zsh.sh
 export GIT_EDITOR=vim
 export EDITOR=vim
 
+if [ -x "$(command -v pgrep)" ]; then
+    alias pgrep="pgrep -a"
+fi
+
 if [ -x "$(command -v find)" ]; then
     alias fd="find . | rg"
 fi
