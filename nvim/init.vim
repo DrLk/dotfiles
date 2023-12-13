@@ -42,11 +42,17 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 
-" Statusline
-Plugin 'vim-airline/vim-airline'
+" Status line
+Plugin 'nvim-lualine/lualine.nvim'
+Plugin 'nvim-tree/nvim-web-devicons'
+
+" Telescope
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'nvim-telescope/telescope.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -158,6 +164,24 @@ let g:syntastic_check_on_wq = 0
 " so that syntastic uses .jshintrc files if present - http://stackoverflow.com/questions/28573553/how-can-i-make-syntastic-load-a-different-checker-based-on-existance-of-files-in
 
 autocmd FileType javascript let b:syntastic_checkers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['standard']
+
+"""""""""""""""""""""""""""
+" Status line
+"""""""""""""""""""""""""""
+lua require('lualine').setup()
+
+
+"""""""""""""""""""""""""""
+" Telescope
+"""""""""""""""""""""""""""
+
+" Using Lua functions
+nnoremap <C-p>      <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+
 
 """""""""""""""""""""""""""
 " Custom (no plugin related)
