@@ -35,7 +35,7 @@ require("lazy").setup({
 	},
 	{ "williamboman/mason.nvim", build = ":MasonUpdate" },
 	{ "mfussenegger/nvim-dap" },
-	{ "jay-babu/mason-nvim-dap.nvim" },
+	{ "rcarriga/nvim-dap-ui" },
 
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "jose-elias-alvarez/null-ls.nvim" },
