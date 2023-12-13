@@ -71,7 +71,19 @@ require("lazy").setup({
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		---@type Flash.Config
-		opts = {},
+		opts = {
+			search = {
+				exclude = {
+					"notify",
+					"cmp_menu",
+					"noice",
+					"flash_prompt",
+					function(win)
+						return vim.bo[vim.api.nvim_win_get_buf(win)].filetype == "log"
+					end,
+				},
+			},
+		},
 		keys = {
 			{
 				"s",
