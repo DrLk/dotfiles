@@ -15,11 +15,14 @@ require("lazy").setup({
         dependencies = {'nvim-lua/plenary.nvim'}
     }, 
     {'cooperuser/glowbeam.nvim'}, 
-    --{'joshdick/onedark.vim'},
-    {'rebelot/kanagawa.nvim'},
-    {'nvim-treesitter/nvim-treesitter'}, {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'}, {'hrsh7th/cmp-buffer'}, {'hrsh7th/cmp-path'},
-    {'hrsh7th/cmp-cmdline'}, {'hrsh7th/nvim-cmp'}, {'lewis6991/gitsigns.nvim'},
+    {'nvim-treesitter/nvim-treesitter'}, 
+    {'neovim/nvim-lspconfig'},
+    {'hrsh7th/cmp-nvim-lsp'}, 
+    {'hrsh7th/cmp-buffer'}, 
+    {'hrsh7th/cmp-path'},
+    {'hrsh7th/cmp-cmdline'}, 
+    {'hrsh7th/nvim-cmp'}, 
+    {'lewis6991/gitsigns.nvim'},
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -31,7 +34,7 @@ require("lazy").setup({
     {'jose-elias-alvarez/null-ls.nvim'}, {'windwp/nvim-autopairs'},
     {'Djancyp/outline'}, 
     {'terrortylor/nvim-comment'},
-    {'windwp/nvim-ts-autotag'}, {
+    {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
         dependencies = {
