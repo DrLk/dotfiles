@@ -59,7 +59,6 @@ require("lazy").setup({
 			require("lsp-progress").setup()
 		end,
 	},
-	{ "glepnir/dashboard-nvim", event = "VimEnter", dependencies = { { "nvim-tree/nvim-web-devicons" } } },
 	{ "mtdl9/vim-log-highlighting" },
 	{ "folke/tokyonight.nvim" },
 	{ "folke/which-key.nvim" },
