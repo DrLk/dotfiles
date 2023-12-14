@@ -38,3 +38,15 @@ vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>p", '"+p')
 vim.keymap.set("n", "<leader>p", '"+p')
+
+-- Quickfix
+local function quickfix()
+	vim.lsp.buf.code_action({
+		filter = function(a)
+			return a.isPreferred
+		end,
+		apply = true,
+	})
+end
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<leader>q", quickfix, opts)
