@@ -49,4 +49,5 @@ wk.register({
 		n = { "<cmd>CMakeClean<CR>", "Clean CMake target" },
 		s = { "<cmd>CMakeStop<CR>", "Stop CMake Process" },
 	},
+	q = { "Quick Fix" },
 }, { prefix = "<leader>" })
