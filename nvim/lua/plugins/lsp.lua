@@ -2,8 +2,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local on_attach = function(client, bufnr)
-    do return end
-
     vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
         vim.lsp.buf.format({
             bufnr = bufnr,

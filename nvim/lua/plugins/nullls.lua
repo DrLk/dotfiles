@@ -11,6 +11,8 @@ null_ls.setup({
 		-- null_ls.builtins.formatting.isort,
 		-- null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.yapf,
+		-- null_ls.builtins.formatting.autopep8,
+		--
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.eslint_d.with({
 			filetypes = {
@@ -21,7 +23,7 @@ null_ls.setup({
 			},
 		}),
 		null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.diagnostics.ltrs,
+		null_ls.builtins.diagnostics.ltrs,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.prettierd.with({
 			filetypes = {
@@ -53,6 +55,9 @@ null_ls.setup({
 		-- 	})
 		-- end
 
+		local lsp_format_modifications = require("lsp-format-modifications")
+		lsp_format_modifications.attach(client, bufnr, { format_on_save = false })
+
 		vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
 			vim.lsp.buf.format({
 				bufnr = bufnr,
@@ -61,11 +66,21 @@ null_ls.setup({
 				end,
 			})
 			-- vim.lsp.buf.formatting_sync()
-        end, {})
+		end, {})
 
 		vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
-			local lsp_format_modifications = require("lsp-format-modifications")
-		lsp_format_modifications.format_modifications(client, bufnr)
+			local config = {
+
+				-- The VCS to use. Possible options are: "git", "hg". Defaults to "git".
+				vcs = "git",
+
+				-- EXPERIMENTAL: when true, do not attempt to format the outermost empty
+				-- lines in diff hunks, and do not touch hunks consisting of entirely empty
+				-- lines. For some LSP servers, this can result in more intuitive behaviour.
+				experimental_empty_line_handling = true,
+			}
+
+			lsp_format_modifications.format_modifications(client, bufnr, config)
 		end, {})
 	end,
 })
