@@ -53,7 +53,7 @@ null_ls.setup({
 		-- 	})
 		-- end
 
-		vim.api.nvim_buf_create_user_command(bufnr, "Formatq", function()
+		vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
 			vim.lsp.buf.format({
 				bufnr = bufnr,
 				filter = function(client)
