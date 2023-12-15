@@ -9,7 +9,9 @@ null_ls.setup({
 		--     end,
 		-- }),
 		-- null_ls.builtins.formatting.isort,
-		null_ls.builtins.formatting.black,
+		-- null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.yapf,
+		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.eslint_d.with({
 			filetypes = {
 				"typescript",
@@ -19,7 +21,7 @@ null_ls.setup({
 			},
 		}),
 		null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.diagnostics.ltrs,
+        null_ls.builtins.diagnostics.ltrs,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.prettierd.with({
 			filetypes = {
@@ -51,7 +53,7 @@ null_ls.setup({
 		-- 	})
 		-- end
 
-		vim.api.nvim_buf_create_user_command(bufnr, "Format2", function()
+		vim.api.nvim_buf_create_user_command(bufnr, "Formatq", function()
 			vim.lsp.buf.format({
 				bufnr = bufnr,
 				filter = function(client)
@@ -59,12 +61,11 @@ null_ls.setup({
 				end,
 			})
 			-- vim.lsp.buf.formatting_sync()
-		end, {})
+        end, {})
 
-		vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications2", function()
+		vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
 			local lsp_format_modifications = require("lsp-format-modifications")
-			lsp_format_modifications.format_modifications(client, bufnr)
-			-- vim.lsp.buf.formatting_sync()
+		lsp_format_modifications.format_modifications(client, bufnr)
 		end, {})
 	end,
 })
