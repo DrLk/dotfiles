@@ -19,29 +19,29 @@ local on_attach = function(client, bufnr)
 end
 -- Sntup language servers.
 local lspconfig = require("lspconfig")
-lspconfig.pyright.setup({})
+lspconfig.pyright.setup({ on_attach = on_attach })
 lspconfig.tsserver.setup({})
 lspconfig.prismals.setup({})
 lspconfig.clangd.setup({ on_attach = on_attach })
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
-	settings = {
-		Lua = {
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-		},
-	},
+    settings = {
+        Lua = {
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { "vim" },
+            },
+        },
+    },
 })
 lspconfig.cssls.setup({ capabilities = capabilities })
 lspconfig.golangci_lint_ls.setup({})
 lspconfig.rust_analyzer.setup({
-	settings = {
-		["rust-analyzer"] = {
-			diagnostics = { enable = true, experimental = { enable = true } },
-		},
-	},
+    settings = {
+        ["rust-analyzer"] = {
+            diagnostics = { enable = true, experimental = { enable = true } },
+        },
+    },
 })
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -75,8 +75,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set({ "n", "v" }, "<Leader>la", vim.lsp.buf.code_action, opts)
         -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         -- vim.keymap.set("n", "<Leader>lf", function()
-        -- vim.lsp.buf.format({ async = true })
+        --     vim.lsp.buf.format({ async = true })
         -- end, opts)
         vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>")
-	end,
+    end,
 })

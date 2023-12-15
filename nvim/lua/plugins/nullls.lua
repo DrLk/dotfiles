@@ -12,8 +12,7 @@ null_ls.setup({
 		-- null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.yapf,
 		-- null_ls.builtins.formatting.autopep8,
-		--
-		null_ls.builtins.formatting.stylua,
+        -- null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.eslint_d.with({
 			filetypes = {
 				"typescript",
