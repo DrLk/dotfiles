@@ -37,6 +37,7 @@ require("lazy").setup({
 	{ "mfussenegger/nvim-dap" },
 	{ "rcarriga/nvim-dap-ui" },
 	{ "Civitasv/cmake-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "joechrisellis/lsp-format-modifications.nvim", dependencies = { "nvim-lua/plenary.nvim"} },
 	{ "tpope/vim-fugitive" },
 
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },

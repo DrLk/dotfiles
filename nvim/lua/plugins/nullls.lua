@@ -4,9 +4,9 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	sources = {
 		-- null_ls.builtins.diagnostics.pylint.with({
-		-- 	diagnostics_postprocess = function(diagnostic)
-		-- 		diagnostic.code = diagnostic.message_id
-		-- 	end,
+		--     diagnostics_postprocess = function(diagnostic)
+		--         diagnostic.code = diagnostic.message_id
+		--     end,
 		-- }),
 		-- null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.black,
@@ -39,22 +39,34 @@ null_ls.setup({
 			},
 		}),
 	},
+
 	on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/formatting") then
-			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({
-						bufnr = bufnr,
-						filter = function(client)
-							return client.name == "null-ls"
-						end,
-					})
-					-- vim.lsp.buf.formatting_sync()
+		-- if client.supports_method("textDocument/formatting") then
+		-- 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		-- 	vim.api.nvim_create_autocmd("BufWritePre", {
+		-- 		group = augroup,
+		-- 		buffer = bufnr,
+		-- 		callback = function()
+		-- 			local lsp_format_modifications = require("lsp-format-modifications")
+		-- 			lsp_format_modifications.format_modifications(client, bufnr)
+		-- 		end,
+		-- 	})
+		-- end
+
+		vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+			vim.lsp.buf.format({
+				bufnr = bufnr,
+				filter = function(client)
+					return client.name == "null-ls"
 				end,
 			})
-		end
+			-- vim.lsp.buf.formatting_sync()
+		end, {})
+
+		vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
+			local lsp_format_modifications = require("lsp-format-modifications")
+			lsp_format_modifications.format_modifications(client, bufnr)
+			-- vim.lsp.buf.formatting_sync()
+		end, {})
 	end,
 })
