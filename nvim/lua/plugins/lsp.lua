@@ -5,9 +5,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
         vim.lsp.buf.format({
             bufnr = bufnr,
-            filter = function(client)
-                return client.name == "null-ls"
-            end,
         })
         -- vim.lsp.buf.formatting_sync()
     end, {})
@@ -17,9 +14,42 @@ local on_attach = function(client, bufnr)
         lsp_format_modifications.format_modifications(client, bufnr)
     end, {})
 end
--- Sntup language servers.
 local lspconfig = require("lspconfig")
-lspconfig.pyright.setup({ on_attach = on_attach })
+lspconfig.pylsp.setup({
+    on_attach = on_attach,
+    settings = {
+        pylsp = {
+            plugins = {
+                -- formatter options
+                black = { enabled = false },
+                autopep8 = {
+                    enabled = false,
+                },
+                yapf = {
+                    enabled = true,
+                    args = '--style={based_on_style: pep8 column_limit: 100}'
+                },
+                -- linter options
+                pylint = { enabled = true, executable = "pylint" },
+                ruff = { enabled = false },
+                pyflakes = { enabled = false },
+                pycodestyle = { enabled = false },
+                -- type checker
+                -- pylsp_mypy = {
+                --     enabled = true,
+                --     overrides = { "--python-executable", py_path, true },
+                --     report_progress = true,
+                --     live_mode = false
+                -- },
+                -- auto-completion options
+                -- jedi_completion = { fuzzy = true },
+                -- import sorting
+                -- isort = { enabled = true },
+            },
+        },
+    },
+})
+-- lspconfig.pyright.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.prismals.setup({})
 lspconfig.clangd.setup({ on_attach = on_attach })

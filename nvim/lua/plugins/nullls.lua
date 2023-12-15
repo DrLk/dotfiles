@@ -10,7 +10,7 @@ null_ls.setup({
 		-- }),
 		-- null_ls.builtins.formatting.isort,
 		-- null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.yapf,
+		-- null_ls.builtins.formatting.yapf,
 		-- null_ls.builtins.formatting.autopep8,
         -- null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.eslint_d.with({
@@ -76,7 +76,7 @@ null_ls.setup({
 				-- EXPERIMENTAL: when true, do not attempt to format the outermost empty
 				-- lines in diff hunks, and do not touch hunks consisting of entirely empty
 				-- lines. For some LSP servers, this can result in more intuitive behaviour.
-				experimental_empty_line_handling = true,
+				experimental_empty_line_handling = false,
 			}
 
 			lsp_format_modifications.format_modifications(client, bufnr, config)
