@@ -18,9 +18,7 @@ null_ls.setup({
 				"javascriptreact",
 			},
 		}),
-		null_ls.builtins.formatting.lua_format,
 		null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.diagnostics.ltrs,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.prettierd.with({
@@ -53,7 +51,7 @@ null_ls.setup({
 		-- 	})
 		-- end
 
-		vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+		vim.api.nvim_buf_create_user_command(bufnr, "Format2", function()
 			vim.lsp.buf.format({
 				bufnr = bufnr,
 				filter = function(client)
@@ -63,7 +61,7 @@ null_ls.setup({
 			-- vim.lsp.buf.formatting_sync()
 		end, {})
 
-		vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
+		vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications2", function()
 			local lsp_format_modifications = require("lsp-format-modifications")
 			lsp_format_modifications.format_modifications(client, bufnr)
 			-- vim.lsp.buf.formatting_sync()
