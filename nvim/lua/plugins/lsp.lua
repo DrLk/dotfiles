@@ -23,22 +23,22 @@ lspconfig.pylsp.setup({
                 -- formatter options
                 black = { enabled = false },
                 autopep8 = {
-                    enabled = false,
+                    enabled = true,
                 },
                 yapf = {
-                    enabled = true,
+                    enabled = false,
                     args = '--style={based_on_style: pep8 column_limit: 100}'
                 },
                 -- linter options
                 pylint = { enabled = true, executable = "pylint" },
-                ruff = { enabled = false },
-                pyflakes = { enabled = false },
+                ruff = { enabled = true },
+                pyflakes = { enabled = true },
                 pycodestyle = { enabled = true },
                 -- type checker
                 pylsp_mypy = {
                     enabled = true,
                     -- overrides = { "--python-executable", py_path, true },
-                    report_progress = true,
+                    report_progress = false,
                     live_mode = false
                 },
                 -- auto-completion options
