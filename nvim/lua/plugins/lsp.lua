@@ -33,18 +33,18 @@ lspconfig.pylsp.setup({
                 pylint = { enabled = true, executable = "pylint" },
                 ruff = { enabled = false },
                 pyflakes = { enabled = false },
-                pycodestyle = { enabled = false },
+                pycodestyle = { enabled = true },
                 -- type checker
-                -- pylsp_mypy = {
-                --     enabled = true,
-                --     overrides = { "--python-executable", py_path, true },
-                --     report_progress = true,
-                --     live_mode = false
-                -- },
+                pylsp_mypy = {
+                    enabled = true,
+                    -- overrides = { "--python-executable", py_path, true },
+                    report_progress = true,
+                    live_mode = false
+                },
                 -- auto-completion options
-                -- jedi_completion = { fuzzy = true },
+                jedi_completion = { fuzzy = true },
                 -- import sorting
-                -- isort = { enabled = true },
+                isort = { enabled = true },
             },
         },
     },
