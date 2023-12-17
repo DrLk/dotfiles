@@ -107,6 +107,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- vim.keymap.set("n", "<Leader>lf", function()
         --     vim.lsp.buf.format({ async = true })
         -- end, opts)
-        vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>")
+        vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>", { silent = true, desc = "Format modifications" })
     end,
 })
