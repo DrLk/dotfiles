@@ -20,11 +20,19 @@ require("lazy").setup({
     { "cooperuser/glowbeam.nvim" },
     { "nvim-treesitter/nvim-treesitter" },
     { "neovim/nvim-lspconfig" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "hrsh7th/nvim-cmp" },
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            { "onsails/lspkind.nvim" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "hrsh7th/cmp-cmdline" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help" },
+            { "tzachar/cmp-tabnine",                build = './install.sh', },
+
+        }
+    },
     { "lewis6991/gitsigns.nvim" },
     {
         "nvim-lualine/lualine.nvim",
@@ -34,12 +42,16 @@ require("lazy").setup({
         },
     },
     { "williamboman/mason.nvim",                     build = ":MasonUpdate" },
-    { "mfussenegger/nvim-dap" },
-    { "rcarriga/nvim-dap-ui",                        dependencies = { "mfussenegger/nvim-dap" } },
-    { "theHamsta/nvim-dap-virtual-text",             dependencies = { "mfussenegger/nvim-dap" } },
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            { "rcarriga/nvim-dap-ui", },
+            { "theHamsta/nvim-dap-virtual-text", }
+        }
+    },
     { "Civitasv/cmake-tools.nvim",                   dependencies = { "nvim-lua/plenary.nvim" } },
     { "joechrisellis/lsp-format-modifications.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-    { 'codota/tabnine-nvim',                         build = "./dl_binaries.sh" },
+    { "codota/tabnine-nvim",                         build = "./dl_binaries.sh" },
     { "tpope/vim-fugitive" },
 
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
@@ -57,8 +69,7 @@ require("lazy").setup({
             "s1n7ax/nvim-window-picker",
         },
     },
-    { "akinsho/bufferline.nvim",            dependencies = { "nvim-tree/nvim-web-devicons" } },
-    { "hrsh7th/cmp-nvim-lsp-signature-help" },
+    { "akinsho/bufferline.nvim",   dependencies = { "nvim-tree/nvim-web-devicons" } },
     {
         "linrongbin16/lsp-progress.nvim",
         event = { "VimEnter" },
