@@ -64,6 +64,7 @@ lspconfig.lua_ls.setup({
         },
     },
 })
+-- lspconfig.stylua.setup({})
 lspconfig.cssls.setup({ capabilities = capabilities })
 lspconfig.golangci_lint_ls.setup({})
 lspconfig.rust_analyzer.setup({
