@@ -4,11 +4,11 @@ local cmp = require 'cmp'
 local lspkind = require('lspkind')
 
 local source_mapping = {
-	buffer = "[Buffer]",
-	nvim_lsp = "[LSP]",
-	nvim_lua = "[Lua]",
-	cmp_tabnine = "[TN]",
-	path = "[Path]",
+    buffer = "[Buffer]",
+    nvim_lsp = "[LSP]",
+    nvim_lua = "[Lua]",
+    cmp_tabnine = "[TN]",
+    path = "[Path]",
 }
 
 cmp.setup({
@@ -99,3 +99,16 @@ cmp.setup.cmdline(':', {
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('lspconfig')['tsserver'].setup { capabilities = capabilities }
+
+-- Disable autocomplete for 'log' files
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "disable autocomplete for 'log' files",
+    pattern = 'log',
+    callback = function()
+        cmp.setup {
+            completion = {
+                autocomplete = false
+            }
+        }
+    end,
+})
