@@ -85,6 +85,7 @@ require("lazy").setup({
     { "hrsh7th/vim-vsnip" },
     { "hrsh7th/vim-vsnip-integ" },
     { "ggandor/leap.nvim"},
+    { "ggandor/flit.nvim", dependencies = { "ggandor/leap.nvim" } },
     -- {
     --     "folke/flash.nvim",
     --     event = "VeryLazy",
