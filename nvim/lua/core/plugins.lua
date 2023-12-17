@@ -17,7 +17,6 @@ require("lazy").setup({
         tag = "0.1.5",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
-    { "cooperuser/glowbeam.nvim" },
     { "nvim-treesitter/nvim-treesitter" },
     { "neovim/nvim-lspconfig" },
     {
