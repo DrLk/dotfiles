@@ -39,6 +39,7 @@ require("lazy").setup({
     { "theHamsta/nvim-dap-virtual-text",             dependencies = { "mfussenegger/nvim-dap" } },
     { "Civitasv/cmake-tools.nvim",                   dependencies = { "nvim-lua/plenary.nvim" } },
     { "joechrisellis/lsp-format-modifications.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+    { 'codota/tabnine-nvim',                         build = "./dl_binaries.sh" },
     { "tpope/vim-fugitive" },
 
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
