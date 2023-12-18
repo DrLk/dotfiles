@@ -57,9 +57,16 @@ lspconfig.lua_ls.setup({
     on_attach = on_attach,
     settings = {
         Lua = {
+            workspace = {
+                library = {
+                    ["/usr/share/nvim/runtime/lua"] = true,
+                    ["/usr/share/nvim/runtime/lua/vim"] = true,
+                    ["/usr/share/nvim/runtime/lua/vim/lsp"] = true
+                },
+            },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = { "vim" },
+                -- globals = { "vim" },
             },
         },
     },
