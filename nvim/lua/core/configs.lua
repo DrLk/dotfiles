@@ -11,8 +11,8 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.textwidth = 120
 vim.wo.linebreak = true
+
 vim.opt.virtualedit = "block"
-vim.opt.undofile = true
 vim.opt.shell = "/bin/zsh"
 
 -- Search
@@ -59,6 +59,9 @@ vim.opt.fillchars = {
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	pattern = { "*" },
 	callback = function()
+        if (vim.bo.filetype ~= "log") then
+            vim.opt.undofile = true
+        end
 		if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
 			vim.api.nvim_exec("normal! g'\"", false)
 		end
