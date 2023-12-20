@@ -79,6 +79,7 @@ require("lazy").setup({
         end,
     },
     { "mtdl9/vim-log-highlighting" },
+    { "joanrivera/vim-highlight" },
     { "folke/tokyonight.nvim" },
     { "folke/which-key.nvim" },
     { "hrsh7th/vim-vsnip" },
