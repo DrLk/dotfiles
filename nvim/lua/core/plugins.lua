@@ -57,7 +57,6 @@ require("lazy").setup({
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
     { "nvimtools/none-ls.nvim" },
     { "windwp/nvim-autopairs" },
-    { "Djancyp/outline" },
     { "terrortylor/nvim-comment" },
     {
         "nvim-neo-tree/neo-tree.nvim",
