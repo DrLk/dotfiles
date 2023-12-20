@@ -16,6 +16,7 @@ wk.register({
 	w = { "Save" },
 	t = { name = "Terminal", f = { "Float terminal" }, h = { "Horizontal terminal" } },
 	h = { "No highlight" },
+	H = { "Highlight" },
 	g = { name = "Git", b = "Branches", c = "Commits", s = "Status" },
 	c = { name = "Comment", l = "Comment Line" },
 	l = {
