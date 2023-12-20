@@ -21,7 +21,7 @@ vim.keymap.set("n", "<Leader>B", function()
 end, { desc = "Set breakpoint" })
 vim.keymap.set("n", "<Leader>lp", function()
     dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end, {desc = "Log point message breakpoint"})
+end, { desc = "Log point message breakpoint" })
 vim.keymap.set("n", "<Leader>dr", function()
     require("dap").repl.open()
 end, { desc = "Open repl" })
@@ -134,6 +134,40 @@ dap.configurations.c = {
     },
 }
 
+dap.adapters.python = {
+    type = "executable",
+    command = os.getenv("HOME") .. "/.venv/bin/python",
+    args = { "-m", "debugpy.adapter" },
+}
+
+dap.configurations.python = {
+    {
+        type = "python",
+        request = "launch",
+        name = "Launch file",
+        program = function()
+            -- First, check if exists CMakeLists.txt
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        pythonPath = function()
+            -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+            -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+            -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+            local cwd = vim.fn.getcwd()
+            if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+                return cwd .. "/venv/bin/python"
+            elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+                return cwd .. "/.venv/bin/python"
+            elseif vim.fn.executable(os.getenv("HOME") .. "/.venv/bin/python") == 1 then
+                return os.getenv("HOME") .. "/.venv/bin/python"
+            else
+                return "/usr/bin/python"
+            end
+        end,
+        cwd = "${workspaceFolder}",
+        args = {},
+    }
+}
 require("dapui").setup()
 
 local dapui = require("dapui")
