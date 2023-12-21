@@ -28,6 +28,8 @@ require("cmake-tools").setup({
         stopOnEntry = false,
         runInTerminal = true,
         console = "integratedTerminal",
+        expressions = "native",
+        args = {},
     },
     cmake_executor = {                   -- executor to use
         name = "quickfix",               -- name of the executor
