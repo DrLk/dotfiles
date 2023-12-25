@@ -29,7 +29,7 @@ require("cmake-tools").setup({
         runInTerminal = true,
         console = "integratedTerminal",
         expressions = "native",
-        args = {},
+        args = {"1", "0.0.0.0", "10200", "127.0.0.1", "10100"},
     },
     cmake_executor = {                   -- executor to use
         name = "quickfix",               -- name of the executor

@@ -20,6 +20,13 @@ require("lazy").setup({
     { "nvim-treesitter/nvim-treesitter" },
     { "neovim/nvim-lspconfig" },
     {
+        "nvimdev/lspsaga.nvim",
+        dependencies = {
+            { 'nvim-treesitter/nvim-treesitter' },
+            { 'nvim-tree/nvim-web-devicons' }
+        }
+    },
+    {
         "hrsh7th/nvim-cmp",
         dependencies = {
             { "onsails/lspkind.nvim" },
@@ -40,7 +47,7 @@ require("lazy").setup({
             "linrongbin16/lsp-progress.nvim",
         },
     },
-    { "williamboman/mason.nvim",                     build = ":MasonUpdate" },
+    { "williamboman/mason.nvim", build = ":MasonUpdate" },
     {
         "mfussenegger/nvim-dap",
         dependencies = {
@@ -83,8 +90,8 @@ require("lazy").setup({
     { "folke/which-key.nvim" },
     { "hrsh7th/vim-vsnip" },
     { "hrsh7th/vim-vsnip-integ" },
-    { "ggandor/leap.nvim"},
-    { "ggandor/flit.nvim", dependencies = { "ggandor/leap.nvim" } },
+    { "ggandor/leap.nvim" },
+    { "ggandor/flit.nvim",         dependencies = { "ggandor/leap.nvim" } },
     -- {
     --     "folke/flash.nvim",
     --     event = "VeryLazy",
