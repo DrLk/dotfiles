@@ -81,7 +81,7 @@ require("lazy").setup({
         event = { "VimEnter" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            require("lsp-progress").setup()
+            require("lsp-progress").setup({})
         end,
     },
     { "mtdl9/vim-log-highlighting" },
@@ -92,6 +92,15 @@ require("lazy").setup({
     { "hrsh7th/vim-vsnip-integ" },
     { "ggandor/leap.nvim" },
     { "ggandor/flit.nvim",         dependencies = { "ggandor/leap.nvim" } },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            { "rcarriga/nvim-notify" },
+            { "MunifTanjim/nui.nvim", },
+
+        }
+    },
     -- {
     --     "folke/flash.nvim",
     --     event = "VeryLazy",
