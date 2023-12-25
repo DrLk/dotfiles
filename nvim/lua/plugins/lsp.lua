@@ -57,8 +57,14 @@ lspconfig.lua_ls.setup({
     on_attach = on_attach,
     settings = {
         Lua = {
+            runtime = {
+                version = 'LuaJIT'
+                -- path = runtime_path,
+            },
             workspace = {
                 library = {
+                    ["~/.config/nvim"] = true,
+                    ["~/.local/share/nvim/lazy"] = true,
                     ["/usr/share/nvim/runtime/lua"] = true,
                     ["/usr/share/nvim/runtime/lua/vim"] = true,
                     ["/usr/share/nvim/runtime/lua/vim/lsp"] = true
