@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -9,7 +10,9 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
+
 vim.opt.rtp:prepend(lazypath)
+
 
 require("lazy").setup({
     {
@@ -36,6 +39,9 @@ require("lazy").setup({
             { "hrsh7th/cmp-cmdline" },
             { "hrsh7th/cmp-nvim-lsp-signature-help" },
             { "tzachar/cmp-tabnine",                build = './install.sh', },
+            { "L3MON4D3/LuaSnip" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "rafamadriz/friendly-snippets" },
 
         }
     },
@@ -48,7 +54,7 @@ require("lazy").setup({
             "linrongbin16/lsp-progress.nvim",
         },
     },
-    { "williamboman/mason.nvim", build = ":MasonUpdate" },
+    { "williamboman/mason.nvim",                     build = ":MasonUpdate" },
     {
         "mfussenegger/nvim-dap",
         dependencies = {
@@ -89,8 +95,6 @@ require("lazy").setup({
     { "joanrivera/vim-highlight" },
     { "folke/tokyonight.nvim" },
     { "folke/which-key.nvim" },
-    { "hrsh7th/vim-vsnip" },
-    { "hrsh7th/vim-vsnip-integ" },
     { "ggandor/leap.nvim" },
     { "ggandor/flit.nvim",         dependencies = { "ggandor/leap.nvim" } },
     {
