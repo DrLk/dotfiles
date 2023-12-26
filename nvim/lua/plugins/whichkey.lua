@@ -23,7 +23,6 @@ wk.register({
 		name = "LSP",
 		d = "Diagnostic",
 		D = "Hover diagnostic",
-		r = "Rename",
 		a = "Action",
 		s = "Symbol",
 	},

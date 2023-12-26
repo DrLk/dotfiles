@@ -27,12 +27,20 @@ vim.keymap.set('n', 'gd', function()
     builtin.lsp_definitions({ initial_mode = "normal" })
 end, { noremap = true, silent = true, desc = "Definitions" })
 
-require('telescope').setup {
+
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+telescope.setup {
     defaults = {
         layout_strategy = "vertical",
         layout_config = {
             height = 0.55,
             prompt_position = 'top',
         },
+        mappings = {
+            n = {
+                ["q"] = actions.close,
+            }
+        }
     }
 }
