@@ -39,6 +39,7 @@ require("lazy").setup({
 
         }
     },
+    { "Badhi/nvim-treesitter-cpp-tools", dependencies = { "nvim-treesitter/nvim-treesitter" } },
     { "lewis6991/gitsigns.nvim" },
     {
         "nvim-lualine/lualine.nvim",
