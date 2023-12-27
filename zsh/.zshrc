@@ -134,14 +134,22 @@ if [ -x "$(command -v bat)" ]; then
     alias cat="bat"
 fi
 
+if [ -x "$(command -v nnn)" ]; then
+    alias nnn="nnn -dTt"
+fi
+
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
     export GIT_EDITOR=nvim
     export EDITOR=nvim
 fi
 
-if [ -x "$(command -v nnn)" ]; then
-    alias nnn="nnn -dTt"
+if [ -x "$(command -v clang)" ]; then
+    export CC=clang
+fi
+
+if [ -x "$(command -v clang++)" ]; then
+    export CXX=clang++
 fi
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
