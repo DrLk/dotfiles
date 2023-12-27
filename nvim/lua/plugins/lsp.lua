@@ -52,7 +52,24 @@ lspconfig.pylsp.setup({
 -- lspconfig.pyright.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.prismals.setup({})
-lspconfig.clangd.setup({ on_attach = on_attach })
+lspconfig.clangd.setup({
+    on_attach = on_attach,
+    cmd = {
+        "clangd",
+        "--background-index",
+        "-j=12",
+        "--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
+        "--clang-tidy",
+        "--clang-tidy-checks=*",
+        "--all-scopes-completion",
+        "--cross-file-rename",
+        "--completion-style=detailed",
+        "--header-insertion-decorators",
+        "--header-insertion=iwyu",
+        "--pch-storage=memory",
+        "--suggest-missing-includes",
+    },
+})
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
     settings = {
