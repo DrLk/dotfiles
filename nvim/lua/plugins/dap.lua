@@ -54,10 +54,10 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.keymap.set("n", "q", ":close!<CR>", { silent = true, desc = "CLose hover window" })
     end,
 })
-vim.keymap.set("n", "q", function()
-    local widgets = require("dap.ui.widgets")
-    widgets.centered_float(widgets.scopes)
-end)
+-- vim.keymap.set("n", "q", function()
+--     local widgets = require("dap.ui.widgets")
+--     widgets.centered_float(widgets.scopes)
+-- end)
 local mason_registry = require("mason-registry")
 local codelldb_root = mason_registry.get_package("codelldb"):get_install_path() .. "/extension/"
 local codelldb_path = codelldb_root .. "adapter/codelldb"
