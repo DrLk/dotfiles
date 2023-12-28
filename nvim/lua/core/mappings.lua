@@ -34,10 +34,8 @@ vim.keymap.set("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>")
 vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=40<CR>")
 
 -- Clipboard functionality (paste from system)
-vim.keymap.set("v", "<leader>y", '"+y')
-vim.keymap.set("n", "<leader>y", '"+y')
-vim.keymap.set("v", "<leader>p", '"+p')
-vim.keymap.set("n", "<leader>p", '"+p')
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
 
 -- Quickfix
 local function quickfix()
