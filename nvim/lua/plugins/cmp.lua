@@ -8,10 +8,13 @@ local source_mapping = {
     nvim_lua = "[Lua]",
     cmp_tabnine = "[TN]",
     path = "[Path]",
+    luasnip = "[Snip]",
 }
 
 require("luasnip.loaders.from_vscode").lazy_load({})
 local luasnip = require('luasnip')
+
+---@diagnostic disable-next-line: redundant-parameter
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
