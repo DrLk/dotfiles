@@ -97,6 +97,7 @@ require("lazy").setup({
     { "folke/which-key.nvim" },
     { "ggandor/leap.nvim" },
     { "ggandor/flit.nvim",         dependencies = { "ggandor/leap.nvim" } },
+    { "RRethy/vim-illuminate" },
     {
         "folke/noice.nvim",
         event = "VeryLazy",

@@ -27,3 +27,5 @@ require("plugins.lspsaga")
 require("plugins.notify")
 require("plugins.cpptools")
 require("plugins.highlight")
+require("plugins.illuminate")
+

@@ -23,17 +23,20 @@ lspconfig.pylsp.setup({
                 -- formatter options
                 black = { enabled = false },
                 autopep8 = {
-                    enabled = true,
+                    enabled = false,
                 },
                 yapf = {
-                    enabled = false,
-                    args = '--style={based_on_style: pep8 column_limit: 100}'
+                    enabled = true,
+                    -- args = "--style='{ based_on_style: pep8, column_limit: 120 }'"
                 },
                 -- linter options
                 pylint = { enabled = true, executable = "pylint" },
                 ruff = { enabled = true },
                 pyflakes = { enabled = true },
-                pycodestyle = { enabled = true },
+                pycodestyle = {
+                    enabled = true,
+                    maxLineLength = 100
+                },
                 -- type checker
                 pylsp_mypy = {
                     enabled = true,
