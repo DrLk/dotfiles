@@ -98,6 +98,7 @@ require("lazy").setup({
     { "ggandor/leap.nvim" },
     { "ggandor/flit.nvim",         dependencies = { "ggandor/leap.nvim" } },
     { "RRethy/vim-illuminate" },
+    { "folke/trouble.nvim",        dependencies = { "nvim-tree/nvim-web-devicons" } },
     {
         "folke/noice.nvim",
         event = "VeryLazy",

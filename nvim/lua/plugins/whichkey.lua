@@ -12,7 +12,7 @@ wk.register({
 	y = { "Copy" },
 	e = { "File Manager" },
 	o = { "Git status" },
-	x = { "Close Buffer" },
+	x = { "Diagnostics" },
 	w = { "Save" },
 	t = { name = "Terminal", f = { "Float terminal" }, h = { "Horizontal terminal" } },
 	h = { "No highlight" },
