@@ -4,4 +4,4 @@ vim.keymap.set("n", "<leader>xw", function() trouble.toggle("workspace_diagnosti
 vim.keymap.set("n", "<leader>xd", function() trouble.toggle("document_diagnostics") end, { desc = "document" })
 vim.keymap.set("n", "<leader>xq", function() trouble.toggle("quickfix") end, { desc = "quickfix" })
 vim.keymap.set("n", "<leader>xl", function() trouble.toggle("loclist") end, { desc = "loclist" })
-vim.keymap.set("n", "<leader>gr", function() trouble.toggle("lsp_references") end, { desc = "lsp_references" })
+vim.keymap.set("n", "gr", function() trouble.toggle("lsp_references") end, { desc = "lsp_references" })

@@ -71,6 +71,7 @@ lspconfig.clangd.setup({
         "--header-insertion=iwyu",
         "--pch-storage=memory",
         "--suggest-missing-includes",
+        -- "--compile-commands-dir=./"
     },
 })
 lspconfig.lua_ls.setup({
@@ -127,13 +128,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
         vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
         -- vim.keymap
-        -- vim.keymap
-        --     .set('n', '<Leader>sa', vim.lsp.buf.add_workspace_folder, opts)
-        -- vim.keymap.set('n', '<Leader>sr', vim.lsp.buf.remove_workspace_folder,
-        --                opts)
-        -- vim.keymap.set('n', '<Leader>sl', function()
-        --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        -- end, opts)
+        vim.keymap
+            .set('n', '<Leader>sa', vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set('n', '<Leader>sr', vim.lsp.buf.remove_workspace_folder,
+            opts)
+        vim.keymap.set('n', '<Leader>sl', function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, opts)
         -- vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
         -- vim.keymap.set("n", "<Leader>lr", vim.lsp.buf.rename, opts)
         vim.keymap.set({ "n", "v" }, "<Leader>la", vim.lsp.buf.code_action, opts)

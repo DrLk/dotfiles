@@ -19,9 +19,9 @@ end, { noremap = true, silent = true, desc = "Git status" })
 
 vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols, {})
 
-vim.keymap.set('n', 'gr', function()
-    builtin.lsp_references({ initial_mode = "normal" })
-end, { noremap = true, silent = true, desc = "References" })
+-- vim.keymap.set('n', 'gr', function()
+--     builtin.lsp_references({ initial_mode = "normal" })
+-- end, { noremap = true, silent = true, desc = "References" })
 
 vim.keymap.set('n', 'gd', function()
     builtin.lsp_definitions({ initial_mode = "normal" })
