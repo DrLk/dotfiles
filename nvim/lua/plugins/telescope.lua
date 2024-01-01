@@ -30,6 +30,7 @@ end, { noremap = true, silent = true, desc = "Definitions" })
 
 local telescope = require("telescope")
 local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
 telescope.setup {
     defaults = {
         layout_strategy = "vertical",
@@ -40,7 +41,9 @@ telescope.setup {
         mappings = {
             n = {
                 ["q"] = actions.close,
-            }
+                ["<c-t>"] = trouble.open_with_trouble,
+            },
+            i = { ["<c-t>"] = trouble.open_with_trouble },
         }
     }
 }

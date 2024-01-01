@@ -1,4 +1,9 @@
 local trouble = require("trouble")
+trouble.setup({
+        group = true, -- group results by file
+        skip_groups = true,
+    }
+)
 vim.keymap.set("n", "<leader>xx", function() trouble.toggle() end, { desc = "toggle" })
 vim.keymap.set("n", "<leader>xw", function() trouble.toggle("workspace_diagnostics") end, { desc = "workspace" })
 vim.keymap.set("n", "<leader>xd", function() trouble.toggle("document_diagnostics") end, { desc = "document" })

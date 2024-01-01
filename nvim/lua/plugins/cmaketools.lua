@@ -40,7 +40,7 @@ require("cmake-tools").setup({
             quickfix = {
                 show = "always",         -- "always", "only_on_error"
                 position = "belowright", -- "bottom", "top"
-                size = 10,
+                size = 20,
                 encoding = "utf-8",      -- if encoding is not "utf-8", it will be converted to "utf-8" using `vim.fn.iconv`
             },
             overseer = {
