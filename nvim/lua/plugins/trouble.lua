@@ -10,3 +10,4 @@ vim.keymap.set("n", "<leader>xd", function() trouble.toggle("document_diagnostic
 vim.keymap.set("n", "<leader>xq", function() trouble.toggle("quickfix") end, { desc = "quickfix" })
 vim.keymap.set("n", "<leader>xl", function() trouble.toggle("loclist") end, { desc = "loclist" })
 vim.keymap.set("n", "gr", function() trouble.toggle("lsp_references") end, { desc = "lsp_references" })
+vim.keymap.set("n", "gi", function() trouble.toggle("lsp_implementations") end, { desc = "lsp_implementations" })
