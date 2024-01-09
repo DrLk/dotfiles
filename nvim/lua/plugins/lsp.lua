@@ -1,5 +1,7 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities.textDocument.semanticHighlighting = true
+capabilities.offsetEncoding = "utf-8"
 
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
@@ -17,6 +19,7 @@ end
 local lspconfig = require("lspconfig")
 lspconfig.pylsp.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         pylsp = {
             plugins = {
@@ -55,8 +58,11 @@ lspconfig.pylsp.setup({
 -- lspconfig.pyright.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.prismals.setup({})
+
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
 lspconfig.clangd.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     cmd = {
         "clangd",
         "--background-index",
@@ -71,11 +77,13 @@ lspconfig.clangd.setup({
         "--header-insertion=iwyu",
         "--pch-storage=memory",
         "--suggest-missing-includes",
+        -- "--offset-encoding=utf-16",
         -- "--compile-commands-dir=./"
     },
 })
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = {
