@@ -80,9 +80,9 @@ cmp.setup({
         {
             { name = 'luasnip',    option = { show_autosnippets = true } },
             { name = 'nvim_lsp' },
-            { name = 'cmp_tabnine' },
         },
         {
+            { name = 'cmp_tabnine' },
             -- { name = 'vsnip' }, -- For vsnip users.
             { name = 'buffer' },
             { name = 'nvim_lsp_signature_help' }

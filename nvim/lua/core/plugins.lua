@@ -67,7 +67,8 @@ require("lazy").setup({
     },
     { "Civitasv/cmake-tools.nvim",                   dependencies = { "nvim-lua/plenary.nvim" } },
     { "joechrisellis/lsp-format-modifications.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-    { "codota/tabnine-nvim",                         build = "./dl_binaries.sh" },
+    -- { "codota/tabnine-nvim",                         build = "./dl_binaries.sh" },
+    { "github/copilot.vim" },
     { "sindrets/diffview.nvim" },
     { "tpope/vim-fugitive" },
 
