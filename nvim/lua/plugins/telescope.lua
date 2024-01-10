@@ -33,6 +33,7 @@ local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 telescope.setup {
     defaults = {
+        file_ignore_patterns = { "node_modules", "dist", "build", "target", ".git" , "external"},
         layout_strategy = "vertical",
         layout_config = {
             height = 0.55,
