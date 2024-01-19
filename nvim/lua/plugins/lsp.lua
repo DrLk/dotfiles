@@ -42,20 +42,42 @@ lspconfig.pylsp.setup({
                 },
                 -- type checker
                 pylsp_mypy = {
-                    enabled = true,
+                    enabled = false,
                     -- overrides = { "--python-executable", py_path, true },
                     report_progress = false,
                     live_mode = false
                 },
                 -- auto-completion options
-                jedi_completion = { fuzzy = true },
+                jedi_completion = {
+                    enabled = false,
+                    fuzzy = true,
+                },
                 -- import sorting
                 isort = { enabled = true },
             },
         },
     },
 })
--- lspconfig.pyright.setup({})
+
+lspconfig.pyright.setup(
+    {
+        on_attach = on_attach,
+        settings = {
+            pyright = {
+                autoImportCompletion = true,
+            },
+            python = {
+                analysis =
+                {
+                    autoSearchPaths = true,
+                    diagnosticMode = 'openFilesOnly',
+                    useLibraryCodeForTypes = true,
+                    typeCheckingMode = 'off'
+                }
+            }
+        }
+    })
+
 lspconfig.tsserver.setup({})
 lspconfig.prismals.setup({})
 
