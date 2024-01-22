@@ -1,15 +1,20 @@
 local trouble = require("trouble")
 trouble.setup({
-        group = true, -- group results by file
-        skip_groups = true,
+    group = true, -- group results by file
+    skip_groups = true,
     action_keys = {
         previous = "<leader>k", -- previous item
         next = "<leader>j",     -- next item
     },
-    }
+    height = 20,                -- height of the trouble list when position is top or bottom
+    padding = false,            -- add an extra new line on top of the list
+}
 )
 vim.keymap.set("n", "<leader>xx", function() trouble.close() end, { desc = "toggle" })
-vim.keymap.set("n", "<leader>xw", function() trouble.close() trouble.open("workspace_diagnostics") end, { desc = "workspace" })
+vim.keymap.set("n", "<leader>xw", function()
+    trouble.close()
+    trouble.open("workspace_diagnostics")
+end, { desc = "workspace" })
 vim.keymap.set("n", "<leader>xd", function() trouble.open("document_diagnostics") end, { desc = "document" })
 vim.keymap.set("n", "<leader>xq", function() trouble.open("quickfix") end, { desc = "quickfix" })
 vim.keymap.set("n", "<leader>xl", function() trouble.open("loclist") end, { desc = "loclist" })
@@ -44,4 +49,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
             })
     end,
 })
-
