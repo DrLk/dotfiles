@@ -81,12 +81,26 @@ lspconfig.pyright.setup(
 lspconfig.tsserver.setup({})
 lspconfig.prismals.setup({})
 
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
+-- Function to get the path to clangd from Mason
+local function get_clangd_path()
+    local mason_registry = require("mason-registry")
+    local clangd_root = mason_registry.get_package("clangd"):get_install_path()
+    local bin_path = ""
+    mason_registry.get_package("clangd"):get_receipt()
+        :if_present(
+        ---@param receipt InstallReceipt
+            function(receipt)
+                bin_path = receipt.links.bin["clangd"]
+            end
+        )
+
+    return vim.fn.resolve(clangd_root .. "/" .. bin_path)
+end
 lspconfig.clangd.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = {
-        "clangd",
+        get_clangd_path(),
         "--background-index",
         "-j=12",
         "--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
