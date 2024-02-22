@@ -61,7 +61,6 @@ lspconfig.pylsp.setup({
 
 lspconfig.pyright.setup(
     {
-        on_attach = on_attach,
         settings = {
             pyright = {
                 autoImportCompletion = true,
