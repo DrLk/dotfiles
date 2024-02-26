@@ -7,6 +7,7 @@ require("cmake-tools").setup({
         "-DCHECK_GLIBC_SYMBOLS_VERSION=OFF",
         "-DSTATIC_LINK_FUSE=OFF",
         "-DSTATIC_LINK_ATOMIC=OFF",
+        "-DBUILD_WEBUI=0",
         "-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=mold",
         "-DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=mold",
         "-DCMAKE_MODULE_LINKER_FLAGS=-fuse-ld=mold" }, -- this will be passed when invoke `CMakeGenerate`
