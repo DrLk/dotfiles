@@ -15,6 +15,8 @@ local on_attach = function(client, bufnr)
         local lsp_format_modifications = require("lsp-format-modifications")
         lsp_format_modifications.format_modifications(client, bufnr)
     end, {})
+
+    vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>", { silent = true, desc = "Format modifications" })
 end
 local lspconfig = require("lspconfig")
 lspconfig.pylsp.setup({
@@ -141,6 +143,10 @@ lspconfig.lua_ls.setup({
         },
     },
 })
+lspconfig.bashls.setup({
+    capabilities = capabilities,
+    filetypes = { 'sh', 'zsh', }
+})
 -- lspconfig.stylua.setup({})
 lspconfig.cssls.setup({ capabilities = capabilities })
 lspconfig.golangci_lint_ls.setup({})
@@ -185,6 +191,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- vim.keymap.set("n", "<Leader>lf", function()
         --     vim.lsp.buf.format({ async = true })
         -- end, opts)
-        vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>", { silent = true, desc = "Format modifications" })
     end,
 })
