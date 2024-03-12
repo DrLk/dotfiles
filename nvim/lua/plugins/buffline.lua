@@ -18,3 +18,11 @@ require("bufferline").setup {
         -- separator_style = "slope"
     }
 }
+
+vim.keymap.set("n", "<leader>X", ":BufferLinePickClose<CR>")
+-- vim.keymap.set("n", "<leader>X", ":BufferLineCloseRight<CR>")
+vim.keymap.set("n", "<leader>s", ":BufferLineSortByTabs<CR>")
+-- Tabs
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>")
+
