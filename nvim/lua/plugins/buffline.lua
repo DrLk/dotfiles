@@ -19,10 +19,10 @@ require("bufferline").setup {
     }
 }
 
-vim.keymap.set("n", "<leader>X", ":BufferLinePickClose<CR>")
--- vim.keymap.set("n", "<leader>X", ":BufferLineCloseRight<CR>")
-vim.keymap.set("n", "<leader>s", ":BufferLineSortByTabs<CR>")
+vim.keymap.set("n", "<leader>X", ":BufferLinePickClose<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>X", ":BufferLineCloseRight<CR>", { silent = true })
+vim.keymap.set("n", "<leader>s", ":BufferLineSortByTabs<CR>", { silent = true })
 -- Tabs
-vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
-vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>")
+-- vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
+vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
 
