@@ -133,7 +133,10 @@ lspconfig.lua_ls.setup({
                     ["~/.local/share/nvim/lazy"] = true,
                     ["/usr/share/nvim/runtime/lua"] = true,
                     ["/usr/share/nvim/runtime/lua/vim"] = true,
-                    ["/usr/share/nvim/runtime/lua/vim/lsp"] = true
+                    ["/usr/share/nvim/runtime/lua/vim/lsp"] = true,
+                    ["~/.local/share/nvim/runtime/lua"] = true,
+                    ["~/.local/share/nvim/runtime/lua/vim"] = true,
+                    ["~/.local/share/nvim/runtime/lua/vim/lsp"] = true
                 },
             },
             diagnostics = {
