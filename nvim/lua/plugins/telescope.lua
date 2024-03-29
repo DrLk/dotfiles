@@ -30,7 +30,7 @@ end, { noremap = true, silent = true, desc = "Definitions" })
 
 local telescope = require("telescope")
 local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
+local trouble = require("trouble.sources.telescope")
 telescope.setup {
     defaults = {
         file_ignore_patterns = { "node_modules", "dist", "build", "target", ".git" , "external"},
