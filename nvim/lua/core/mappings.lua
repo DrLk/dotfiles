@@ -30,6 +30,10 @@ vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=40<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
 
+-- Clipboard functionality (don't copy deleted text)
+vim.api.nvim_set_keymap('n', 'd', '"dd', { noremap = true })
+vim.api.nvim_set_keymap('n', 'x', '"xx', { noremap = true })
+
 -- Quickfix
 local function quickfix()
 	vim.lsp.buf.code_action({
