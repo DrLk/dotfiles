@@ -58,11 +58,19 @@ vim.api.nvim_create_autocmd('FileType', {
 --     local widgets = require("dap.ui.widgets")
 --     widgets.centered_float(widgets.scopes)
 -- end)
+
+dap.adapters.gdb = {
+    id = 'gdb',
+    type = 'executable',
+    command = 'gdb',
+    args = { '--quiet', '--interpreter=dap' },
+}
 local mason_registry = require("mason-registry")
 local codelldb_root = mason_registry.get_package("codelldb"):get_install_path() .. "/extension/"
 local codelldb_path = codelldb_root .. "adapter/codelldb"
 local liblldb_path = codelldb_root .. "lldb/lib/liblldb.so"
-dap.adapters.lldb = {
+
+dap.adapters.codelldb = {
     type = "server",
     port = "${port}",
     host = "127.0.0.1",
@@ -72,12 +80,18 @@ dap.adapters.lldb = {
     },
 }
 
+dap.adapters.lldbdap = {
+    type = "executable",
+    name = "lldb-dap",
+    command = os.getenv("HOME") .. "/.local/bin/lldb-dap",
+}
+
 local file = require("utils.file")
 dap.defaults.fallback.terminal_win_cmd = "10split new"
 dap.configurations.cpp = {
     {
         name = "C++ Debug And Run",
-        type = "lldb",
+        type = "lldbdap",
         request = "launch",
         program = function()
             -- First, check if exists CMakeLists.txt
@@ -102,6 +116,7 @@ dap.configurations.cpp = {
         stopOnEntry = false,
         runInTerminal = true,
         console = "integratedTerminal",
+        showDisassembly = "never",
         args = {},
     },
 }
@@ -109,7 +124,7 @@ dap.configurations.cpp = {
 dap.configurations.c = {
     {
         name = "C++ Debug And Run",
-        type = "lldb",
+        type = "lldbdap",
         request = "launch",
         program = function()
             -- First, check if exists CMakeLists.txt
@@ -134,6 +149,7 @@ dap.configurations.c = {
         stopOnEntry = false,
         runInTerminal = true,
         console = "integratedTerminal",
+        showDisassembly = "never",
         args = {},
     },
 }
