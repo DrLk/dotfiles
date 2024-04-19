@@ -1,4 +1,19 @@
-require("cmake-tools").setup({
+vim.keymap.set("n", "<leader>mg", "<cmd>CMakeGenerate<CR>", { desc = "Generate" })
+vim.keymap.set("n", "<leader>mx", "<cmd>CMakeGenerate!<CR>", { desc = "Clean and generate" })
+vim.keymap.set("n", "<leader>mb", "<cmd>CMakeBuild<CR>", { desc = "Build" })
+vim.keymap.set("n", "<leader>mr", "<cmd>CMakeRun<CR>", { desc = "Run" })
+vim.keymap.set("n", "<leader>md", "<cmd>CMakeDebug<CR>", { desc = "Debug" })
+vim.keymap.set("n", "<leader>my", "<cmd>CMakeSelectBuildType<CR>", { desc = "Select Build Type" })
+vim.keymap.set("n", "<leader>mt", "<cmd>CMakeSelectBuildTarget<CR>", { desc = "Select Build Target" })
+vim.keymap.set("n", "<leader>ml", "<cmd>CMakeSelectLaunchTarget<CR>", { desc = "Select Launch Target" })
+vim.keymap.set("n", "<leader>mo", "<cmd>CMakeOpen<CR>", { desc = "Open CMake Console" })
+vim.keymap.set("n", "<leader>mc", "<cmd>CMakeClose<CR>", { desc = "Close CMake Console" })
+vim.keymap.set("n", "<leader>mi", "<cmd>CMakeInstall<CR>", { desc = "Intall CMake target" })
+vim.keymap.set("n", "<leader>mn", "<cmd>CMakeClean<CR>", { desc = "Clean CMake target" })
+vim.keymap.set("n", "<leader>ms", "<cmd>CMakeStop<CR>", { desc = "Stop CMake Process" })
+vim.keymap.set("n", "<leader>mp", "<cmd>cd %:p:h<CR> ", { desc = "Change pwd to current file" })
+
+local cmakeArgs = {
     cmake_command = "cmake",         -- this is used to specify cmake command path
     cmake_regenerate_on_save = true, -- auto generate when save CMakeLists.txt
     cmake_generate_options = {
@@ -99,6 +114,7 @@ require("cmake-tools").setup({
             },
         },
     },
+
     cmake_notifications = {
         enabled = true, -- show cmake execution progress in nvim-notify
         spinner = {
@@ -115,19 +131,8 @@ require("cmake-tools").setup({
         },                     -- icons used for progress display
         refresh_rate_ms = 100, -- how often to iterate icons
     },
-})
+}
 
-vim.keymap.set("n", "<leader>mg", "<cmd>CMakeGenerate<CR>", { desc = "Generate" })
-vim.keymap.set("n", "<leader>mx", "<cmd>CMakeGenerate!<CR>", { desc = "Clean and generate" })
-vim.keymap.set("n", "<leader>mb", "<cmd>CMakeBuild<CR>", { desc = "Build" })
-vim.keymap.set("n", "<leader>mr", "<cmd>CMakeRun<CR>", { desc = "Run" })
-vim.keymap.set("n", "<leader>md", "<cmd>CMakeDebug<CR>", { desc = "Debug" })
-vim.keymap.set("n", "<leader>my", "<cmd>CMakeSelectBuildType<CR>", { desc = "Select Build Type" })
-vim.keymap.set("n", "<leader>mt", "<cmd>CMakeSelectBuildTarget<CR>", { desc = "Select Build Target" })
-vim.keymap.set("n", "<leader>ml", "<cmd>CMakeSelectLaunchTarget<CR>", { desc = "Select Launch Target" })
-vim.keymap.set("n", "<leader>mo", "<cmd>CMakeOpen<CR>", { desc = "Open CMake Console" })
-vim.keymap.set("n", "<leader>mc", "<cmd>CMakeClose<CR>", { desc = "Close CMake Console" })
-vim.keymap.set("n", "<leader>mi", "<cmd>CMakeInstall<CR>", { desc = "Intall CMake target" })
-vim.keymap.set("n", "<leader>mn", "<cmd>CMakeClean<CR>", { desc = "Clean CMake target" })
-vim.keymap.set("n", "<leader>ms", "<cmd>CMakeStop<CR>", { desc = "Stop CMake Process" })
-vim.keymap.set("n", "<leader>mp", "<cmd>cd %:p:h<CR> ", { desc = "Change pwd to current file" })
+require("cmake-tools").setup(cmakeArgs)
+
+return cmakeArgs

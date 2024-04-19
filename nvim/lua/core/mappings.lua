@@ -17,7 +17,6 @@ vim.keymap.set("n", "|", ":vsplit<CR>")
 vim.keymap.set("n", "\\", ":split<CR>")
 
 -- Other
-vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
@@ -45,3 +44,6 @@ local function quickfix()
 end
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>q", quickfix, opts)
+
+-- Quit
+vim.keymap.set("n", "<leader>Q", ":qa!<CR>", opts)

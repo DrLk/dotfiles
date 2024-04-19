@@ -5,7 +5,11 @@ end, { noremap = true, silent = true, desc = "Resume" })
 vim.keymap.set('n', '<leader>ff', function()
     builtin.find_files({ initial_mode = "insert" })
 end, { noremap = true, silent = true, desc = "Find files" })
-vim.keymap.set('n', '<leader>fw', builtin.live_grep, {})
+
+local conf = require('telescope.config').values
+vim.keymap.set('n', '<leader>fw', builtin.live_grep,
+    { vimgrep_arguments = table.insert(conf.vimgrep_arguments, '--fixed-strings'), })
+
 vim.keymap.set('n', '<leader>fb', function()
     builtin.buffers({ initial_mode = "normal" })
 end, { noremap = true, silent = true, desc = "Buffers" })
@@ -33,7 +37,7 @@ local actions = require("telescope.actions")
 local trouble = require("trouble.sources.telescope")
 telescope.setup {
     defaults = {
-        file_ignore_patterns = { "node_modules", "dist", "build", "target", ".git" , "external"},
+        file_ignore_patterns = { "node_modules", "dist", "build", "target", ".git", "external" },
         layout_strategy = "vertical",
         layout_config = {
             height = 0.55,
