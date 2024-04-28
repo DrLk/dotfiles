@@ -49,7 +49,6 @@ require("lazy").setup({
         }
     },
     { "Badhi/nvim-treesitter-cpp-tools", dependencies = { "nvim-treesitter/nvim-treesitter" } },
-    { "lewis6991/gitsigns.nvim" },
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
@@ -72,6 +71,9 @@ require("lazy").setup({
     { "github/copilot.vim" },
     { "sindrets/diffview.nvim" },
     { "tpope/vim-fugitive" },
+    { "lewis6991/gitsigns.nvim" },
+    { "NeogitOrg/neogit" },
+    { "echasnovski/mini.diff" },
 
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
     { "nvimtools/none-ls.nvim" },
