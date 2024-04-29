@@ -17,4 +17,4 @@
 
 [diff]
     colorMoved = default
-    algorithm = patience
+    algorithm = histogram
