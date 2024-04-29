@@ -41,71 +41,50 @@ gitsigns.setup {
 
         vim.keymap.set("n", "<leader>rr", function()
             gitsigns.preview_hunk_inline()
+            local deleted = require('gitsigns.config').config.show_deleted
             gitsigns.toggle_deleted(false)
 
-            -- Get the current window ID
-            local current_win = vim.api.nvim_get_current_win()
+            vim.defer_fn(function()
+                -- Get the current window ID
+                local current_win = vim.api.nvim_get_current_win()
 
-            -- Get a list of all window IDs
-            local all_wins = vim.api.nvim_list_wins()
+                -- Get a list of all window IDs
+                local all_wins = vim.api.nvim_list_wins()
 
-            -- Find the index of the current window in the list
-            local current_index = nil
-            for i, win in ipairs(all_wins) do
-                if win == current_win then
-                    current_index = i
-                    break
-                end
-            end
-
-            -- If current_index is found and it's not the last window, switch to the next window
-            if current_index and current_index < #all_wins then
-                local next_win = all_wins[current_index + 1]
-                vim.api.nvim_set_current_win(next_win)
-
-                local buf = vim.api.nvim_win_get_buf(next_win)
-
-                -- Get the visible range of lines in the current window
-                local first_line = vim.fn.line('w0')
-                local last_line = vim.fn.line('w$')
-
-                vim.api.nvim_buf_set_lines(buf, last_line, -1, false, {})
-                vim.api.nvim_buf_set_lines(buf, 0, first_line - 1, false, {})
-
-                -- vim.api.nvim_buf_set_option(buf, 'modifiable', false)
-                vim.api.nvim_buf_set_keymap(buf, 'n', '<leader>td', '',
-                    { callback = gitsigns.toggle_deleted })
-                vim.api.nvim_buf_set_keymap(buf, 'n', 'q', '', {
-                    noremap = true,
-                    silent = true,
-                    callback = function()
-                        gitsigns.toggle_deleted(true)
-                        vim.api.nvim_input('<C-w>q')
+                -- Find the index of the current window in the list
+                local current_index = nil
+                for i, win in ipairs(all_wins) do
+                    if win == current_win then
+                        current_index = i
+                        break
                     end
-                })
+                end
 
-                -- local prev_win = all_wins[current_index]
-                -- local prefbuf = vim.api.nvim_win_get_buf(prev_win)
-                -- require('gitsigns.manager').update(prefbuf)
+                -- If current_index is found and it's not the last window, switch to the next window
+                if current_index and current_index < #all_wins then
+                    local next_win = all_wins[current_index + 1]
+                    vim.api.nvim_set_current_win(next_win)
 
+                    local buf = vim.api.nvim_win_get_buf(next_win)
 
-                -- vim.api.nvim_input(':')
-                vim.defer_fn(function()
-                    -- gitsigns.toggle_deleted(false)
-                    gitsigns.get_hunks();
-                    -- vim.api.nvim_input('<CR>')
-                end, 1000)
-                --
-                -- local cursor_valid, original_cursor = vim.api.nvim_win_get_cursor(prev_win)
-                -- vim.api.nvim_win_set_cursor(prev_win, { 204, 0 })
-                -- vim.api.nvim_set_current_win(next_win)
-                -- vim.api.nvim_win_set_cursor(prev_win, original_cursor)
+                    -- Get the visible range of lines in the current window
+                    local first_line = vim.fn.line('w0')
+                    local last_line = vim.fn.line('w$')
 
-                -- local builtin = require("telescope.builtin")
-                -- builtin.find_files({ initial_mode = "insert" })
-                -- local prompt_bufnr = vim.api.nvim_get_current_buf()
-                -- require('telescope.actions').close(prompt_bufnr)
-            end
+                    vim.api.nvim_buf_set_lines(buf, last_line, -1, false, {})
+                    vim.api.nvim_buf_set_lines(buf, 0, first_line - 1, false, {})
+
+                    vim.api.nvim_buf_set_option(buf, 'modifiable', false)
+                    vim.api.nvim_buf_set_keymap(buf, 'n', 'q', '', {
+                        noremap = true,
+                        silent = true,
+                        callback = function()
+                            gitsigns.toggle_deleted(deleted)
+                            vim.api.nvim_input('<C-w>q')
+                        end
+                    })
+                end
+            end, 50)
 
             -- vim.api.nvim_win_close(win_id, true)
         end, { desc = "document" })
@@ -125,7 +104,11 @@ gitsigns.setup {
     signcolumn                        = true,  -- Toggle with `:Gitsigns toggle_signs`
     numhl                             = false, -- Toggle with `:Gitsigns toggle_numhl`
     linehl                            = true,  -- Toggle with `:Gitsigns toggle_linehl`
-    word_diff                         = true,  -- Toggle with `:Gitsigns toggle_word_diff`
+    word_diff                         = false, -- Toggle with `:Gitsigns toggle_word_diff`
+    diff_opts                         = {
+        algorithm = "minimal",
+        ignore_whitespace_change = true,
+    },
     watch_gitdir                      = {
         follow_files = true
     },
