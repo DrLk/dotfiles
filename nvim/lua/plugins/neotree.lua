@@ -15,7 +15,6 @@ require("neo-tree").setup(
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
-        enable_normal_mode_for_inputs = false,                             -- Enable normal mode for input dialogs.
         open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
         sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
         sort_function = nil,                                               -- use a custom function for sorting files and directories in the tree
@@ -64,18 +63,14 @@ require("neo-tree").setup(
             },
             git_status = {
                 symbols = {
-                    -- Change type
-                    added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                    modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                    deleted   = "✖", -- this can only be used in the git_status source
-                    renamed   = "󰁕", -- this can only be used in the git_status source
-                    -- Status type
-                    untracked = "",
-                    ignored   = "",
-                    unstaged  = "󰄱",
-                    staged    = "",
-                    conflict  = "",
-                }
+                    deleted = "",
+                    renamed = "➜",
+                    untracked = "",
+                    ignored = "◌",
+                    unstaged = "󰜀",
+                    staged = "󰄴",
+                    conflict = "",
+                },
             },
             -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
             file_size = {
