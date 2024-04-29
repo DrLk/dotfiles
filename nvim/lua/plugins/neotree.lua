@@ -276,3 +276,6 @@ require("neo-tree").setup(
         }
     }
 )
+
+vim.keymap.set('n', '<leader>gs', '<cmd>Neotree toggle git_status<CR>', { noremap = true, silent = true, desc = "Git status" })
+

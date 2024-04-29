@@ -5,11 +5,13 @@ vim.keymap.set("n", "<leader>e", ":Neotree float reveal<CR>")
 -- vim.keymap.set("n", "<leader>E", ":Neotree left reveal<CR>")
 vim.keymap.set("n", "<leader>o", ":Neotree float git_status<CR>")
 
+
+local opt = { noremap = true, silent = true }
 -- Navigation
-vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
-vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
-vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
-vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", opt)
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", opt)
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", opt)
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", opt)
 vim.keymap.set("n", "<leader>/", ":CommentToggle<CR>")
 
 -- Splits

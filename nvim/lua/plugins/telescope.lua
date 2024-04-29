@@ -17,10 +17,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
 
-vim.keymap.set('n', '<leader>gs', function()
-    builtin.git_status({ initial_mode = "normal" })
-end, { noremap = true, silent = true, desc = "Git status" })
-
 vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols, {})
 
 -- vim.keymap.set('n', 'gr', function()
