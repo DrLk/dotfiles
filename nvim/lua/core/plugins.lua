@@ -70,10 +70,8 @@ require("lazy").setup({
     -- { "codota/tabnine-nvim",                         build = "./dl_binaries.sh" },
     { "github/copilot.vim" },
     { "sindrets/diffview.nvim" },
-    { "tpope/vim-fugitive" },
     { "lewis6991/gitsigns.nvim" },
     { "NeogitOrg/neogit" },
-    { "echasnovski/mini.diff" },
 
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
     { "nvimtools/none-ls.nvim" },
@@ -81,11 +79,12 @@ require("lazy").setup({
     { "terrortylor/nvim-comment" },
     {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
+        branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
+            "3rd/image.nvim",
             "s1n7ax/nvim-window-picker",
         },
     },
