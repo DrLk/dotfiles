@@ -119,6 +119,7 @@ require("lazy").setup({
         }
     },
     { "natecraddock/workspaces.nvim", dependencies = { "natecraddock/sessions.nvim" } },
+    { "echasnovski/mini.animate" },
     -- {
     --     "folke/flash.nvim",
     --     event = "VeryLazy",
