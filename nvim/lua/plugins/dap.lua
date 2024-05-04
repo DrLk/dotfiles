@@ -83,7 +83,7 @@ dap.adapters.codelldb = {
 dap.adapters.lldbdap = {
     type = "executable",
     name = "lldb-dap",
-    command = os.getenv("HOME") .. "/.local/bin/lldb-dap",
+    command = 'lldb-dap',
 }
 
 local file = require("utils.file")
