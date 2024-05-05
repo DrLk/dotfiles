@@ -256,7 +256,7 @@ neotree.setup(
         },
         git_status = {
             window = {
-                position = "tab",
+                -- position = "tab",
                 mappings = {
                     ["A"]  = "git_add_all",
                     ["gu"] = "git_unstage_file",
