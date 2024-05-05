@@ -2,3 +2,9 @@
 !.gitignore
 !nvim
 !nvim/**/*
+!waybar
+!waybar/**/*
+!hypr
+!hypr/**/*
+!zsh
+!zsh/**/*
