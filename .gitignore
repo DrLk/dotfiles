@@ -8,4 +8,6 @@
 !hypr/**/*
 !zsh
 !zsh/**/*
+!rofi
+!rofi/**/*
 ~thefuck/settings.py
