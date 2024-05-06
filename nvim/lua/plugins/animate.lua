@@ -2,7 +2,7 @@ local animate = require('mini.animate')
 animate.setup({
     cursor = {
         -- Animate for 200 milliseconds with linear easing
-        timing = animate.gen_timing.linear({ duration = 200, unit = 'total' }),
+        timing = animate.gen_timing.linear({ duration = 150, unit = 'total' }),
 
         -- Animate with shortest line for any cursor move
         path = animate.gen_path.line({

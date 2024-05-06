@@ -74,7 +74,6 @@ require("lazy").setup({
     { "NeogitOrg/neogit" },
 
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
-    { "nvimtools/none-ls.nvim" },
     { "windwp/nvim-autopairs" },
     { "terrortylor/nvim-comment" },
     {

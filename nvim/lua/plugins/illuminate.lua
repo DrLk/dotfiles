@@ -1,5 +1,12 @@
 -- default configuration
-require('illuminate').configure({     -- providers: provider used to get references in the buffer, ordered by priority
+local illuminate = require('illuminate')
+
+illuminate.pause()
+
+vim.api.nvim_create_autocmd({ "LspAttach" }, {
+    pattern = "*",
+    callback = function(args)
+        illuminate.configure({ -- providers: provider used to get references in the buffer, ordered by priority
     providers = {
         'lsp',
         'treesitter',
@@ -51,4 +58,7 @@ require('illuminate').configure({     -- providers: provider used to get referen
     should_enable = function(bufnr) return true end,
     -- case_insensitive_regex: sets regex case sensitivity
     case_insensitive_regex = false,
+        })
+        illuminate.resume()
+    end
 })
