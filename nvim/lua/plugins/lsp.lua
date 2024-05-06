@@ -118,6 +118,7 @@ lspconfig.clangd.setup({
         -- "--compile-commands-dir=./"
     },
 })
+lspconfig.neocmake.setup({})
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
