@@ -56,7 +56,7 @@ require("lazy").setup({
             "linrongbin16/lsp-progress.nvim",
         },
     },
-    { "williamboman/mason.nvim",                     build = ":MasonUpdate" },
+    { "williamboman/mason.nvim",         build = ":MasonUpdate" },
     {
         "mfussenegger/nvim-dap",
         dependencies = {
@@ -68,7 +68,7 @@ require("lazy").setup({
     { "Civitasv/cmake-tools.nvim",                   dependencies = { "nvim-lua/plenary.nvim" } },
     { "joechrisellis/lsp-format-modifications.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     -- { "codota/tabnine-nvim",                         build = "./dl_binaries.sh" },
-    { "github/copilot.vim" },
+    { "github/copilot.vim",                          lazy = true,                               event = "LspAttach" },
     { "sindrets/diffview.nvim" },
     { "lewis6991/gitsigns.nvim" },
     { "NeogitOrg/neogit" },
@@ -102,7 +102,7 @@ require("lazy").setup({
     { "folke/which-key.nvim" },
     { "ggandor/leap.nvim" },
     { "ggandor/flit.nvim",         dependencies = { "ggandor/leap.nvim" } },
-    { "RRethy/vim-illuminate" },
+    { "RRethy/vim-illuminate",     lazy = true,                                     event = "LspAttach" },
     {
         "folke/trouble.nvim",
         branch = "dev",
