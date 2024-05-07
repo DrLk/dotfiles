@@ -37,7 +37,7 @@ done
 next_index=$(( (current_index + 1) % layout_count ))
 new_layout="${layout_mapping[next_index]}"
 
-if [ $XDG_CURRENT_DESKTOP==sway ]; then
+if [ $XDG_CURRENT_DESKTOP == "sway" ]; then
     swaymsg input type:keyboard xkb_switch_layout next
 else
     # Update the keyboard layout

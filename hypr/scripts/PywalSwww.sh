@@ -11,7 +11,7 @@ monitor_outputs=($(ls "$cache_dir"))
 # Initialize a flag to determine if the ln command was executed
 ln_success=false
 
-if [ $XDG_CURRENT_DESKTOP==sway ]; then
+if [ $XDG_CURRENT_DESKTOP == "sway" ]; then
     current_monitor=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused == true).name')
 else
 # Get first valid monitor
