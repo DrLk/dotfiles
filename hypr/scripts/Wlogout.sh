@@ -19,9 +19,14 @@ if pgrep -x "wlogout" > /dev/null; then
     exit 0
 fi
 
+if [ $XDG_CURRENT_DESKTOP == "sway" ]; then
+    resolution=1440
+    hypr_scale=1
+else
 # Detect monitor resolution and scaling factor
-resolution=$(hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .height / .scale' | awk -F'.' '{print $1}')
-hypr_scale=$(hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .scale')
+    resolution=$(hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .height / .scale' | awk -F'.' '{print $1}')
+    hypr_scale=$(hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .scale')
+fi
 
 echo "Detected Resolution: $resolution"
 
