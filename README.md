@@ -1,1 +1,1 @@
-swaync pamixer pavucontrol blueman-manager
+swaync pamixer pavucontrol blueman-manager wlogout
