@@ -14,6 +14,7 @@ zsh/.zcompdump-ermkaovich-manjaro-5.9.zwc
 !rofi
 !rofi/**/*
 rofi/.current_wallpaper
+rofi/*.rasi
 !Kvantum
 !Kvantum/**/*
 ~thefuck/settings.py
