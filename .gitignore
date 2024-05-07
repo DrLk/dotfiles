@@ -20,4 +20,5 @@ rofi/pywal-color/pywal-theme.rasi
 rofi/*.rasi
 !Kvantum
 !Kvantum/**/*
+Kvantum/kvantum.kvconfig
 ~thefuck/settings.py
