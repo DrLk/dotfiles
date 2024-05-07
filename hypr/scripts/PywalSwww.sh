@@ -11,8 +11,12 @@ monitor_outputs=($(ls "$cache_dir"))
 # Initialize a flag to determine if the ln command was executed
 ln_success=false
 
+if [ $XDG_CURRENT_DESKTOP==sway ]; then
+    current_monitor=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused == true).name')
+else
 # Get first valid monitor
-current_monitor=$(hyprctl -j monitors | jq -r '.[0].name')
+    current_monitor=$(hyprctl -j monitors | jq -r '.[0].name')
+fi
 echo $current_monitor
 # Construct the full path to the cache file
 cache_file="$cache_dir$current_monitor"
