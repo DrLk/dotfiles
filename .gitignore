@@ -9,10 +9,7 @@ waybar/style.css
 !hypr/**/*
 !zsh
 !zsh/**/*
-zsh/.zcompdump-ermkaovich-manjaro-5.9
-zsh/.zcompdump-ermkaovich-manjaro-5.9.zwc
-zsh/.zcompdump-fedora-5.9
-zsh/.zcompdump-fedora-5.9.zwc
+zsh/.zcompdump*
 !rofi
 !rofi/**/*
 rofi/.current_wallpaper
