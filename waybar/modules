@@ -357,7 +357,7 @@
     "max-length": 50,
     "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
 },
-  
+
 "network#speed": {
     "interval": 1,
     "format": "{ifname}",
@@ -371,6 +371,13 @@
     "tooltip-format-disconnected": "󰌙 Disconnected",
     "max-length": 50,
     "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
+},
+
+"custom/network": {
+    "format":"󰺁 HINT!",
+    "exec": "nm-applet --indicator",
+    "interval" : 86400, // once every day
+    "tooltip": true,
 },
       
 "pulseaudio": {
