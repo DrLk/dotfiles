@@ -4,6 +4,7 @@
 !nvim/**/*
 !waybar
 !waybar/**/*
+waybar/style.css
 !hypr
 !hypr/**/*
 !zsh
@@ -12,6 +13,7 @@ zsh/.zcompdump-ermkaovich-manjaro-5.9
 zsh/.zcompdump-ermkaovich-manjaro-5.9.zwc
 !rofi
 !rofi/**/*
+rofi/.current_wallpaper
 !Kvantum
 !Kvantum/**/*
 ~thefuck/settings.py
