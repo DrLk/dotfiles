@@ -1,1 +1,1 @@
-swaync pamixer pavucontrol blueman-manager wlogout wal
+swaync pamixer pavucontrol blueman-manager wlogout wal swww
