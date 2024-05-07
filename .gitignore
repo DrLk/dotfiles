@@ -12,4 +12,6 @@ zsh/.zcompdump-ermkaovich-manjaro-5.9
 zsh/.zcompdump-ermkaovich-manjaro-5.9.zwc
 !rofi
 !rofi/**/*
+!Kvantum
+!Kvantum/**/*
 ~thefuck/settings.py
