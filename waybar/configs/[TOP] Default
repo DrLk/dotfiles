@@ -53,7 +53,6 @@
 	"mpris", 
 	"custom/separator#dot-line",
 	"bluetooth",
-	"custom/separator#dot-line", 
 	"custom/network", 
 	"custom/separator#dot-line", 
 	"pulseaudio",
