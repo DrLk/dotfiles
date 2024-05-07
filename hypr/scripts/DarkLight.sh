@@ -87,13 +87,11 @@ $swww "${next_wallpaper}" $effect
 
 # Set Kvantum Manager theme & QT5/QT6 settings
 if [ "$next_mode" = "Dark" ]; then
-    #kvantum_theme="Catppuccin-Mocha"
-    kvantum_theme="Matchama-Dark"
+    kvantum_theme="Catppuccin-Mocha"
     qt5ct_color_scheme="$HOME/.config/qt5ct/colors/Catppuccin-Mocha.conf"
     qt6ct_color_scheme="$HOME/.config/qt6ct/colors/Catppuccin-Mocha.conf"
 else
-    #kvantum_theme="Catppuccin-Latte"
-    kvantum_theme="Matchama-Dark"
+    kvantum_theme="Catppuccin-Latte"
     qt5ct_color_scheme="$HOME/.config/qt5ct/colors/Catppuccin-Latte.conf"
     qt6ct_color_scheme="$HOME/.config/qt6ct/colors/Catppuccin-Latte.conf"
 fi
