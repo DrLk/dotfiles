@@ -16,6 +16,7 @@
 "margin-right": 8,
 
 "modules-left": [
+	"sway/workspaces",
 	"hyprland/workspaces#pacman",
 	"custom/separator#dot-line",
 	"cpu",
@@ -57,9 +58,8 @@
 	"custom/separator#dot-line",
 	"pulseaudio#microphone",
 	"custom/separator#dot-line",
-	"keyboard-state",
-	"custom/separator#dot-line",
-	"custom/keyboard",
+	"sway/language",
+	"hyperland/language",
 	"custom/separator#dot-line",
 	"custom/power",
 	],

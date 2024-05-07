@@ -64,13 +64,6 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "show-special": false,
-    "persistent-workspaces":{
-        "1": [],
-        "2": [],
-        "3": [],
-        "4": [],
-        "5": [],
-    },
     "format": "{icon}",
     "format-icons": {
       "active": " 󰮯 ",
@@ -485,6 +478,13 @@
     "min-length": 5,
     "tooltip": false,
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+},
+
+"hyprland/language": {
+    "format": "{}",
+    "min-length": 5,
+    "format-en": "🇺🇸",
+    "format-ru": "🇩🇪",
 },
     
 "custom/light_dark": {
