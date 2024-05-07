@@ -37,7 +37,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "2beb3e9cac3ed9335f8972eb6082f380a4f1f124" },
   "nvim-nio": { "branch": "master", "commit": "8765cbc4d0c629c8158a5341e1b4305fd93c3a90" },
   "nvim-notify": { "branch": "master", "commit": "5371f4bfc1f6d3adf4fe9d62cd3a9d44356bfd15" },
-  "nvim-treesitter": { "branch": "master", "commit": "da0efd7398713a3177da5ce8690f0e5c5415763d" },
+  "nvim-treesitter": { "branch": "master", "commit": "acefffae27b5105a717b213e19c5975bf7a4ba68" },
   "nvim-treesitter-cpp-tools": { "branch": "master", "commit": "3ac14c9b9e0f2364f1bede67da77d500d5bcdb7e" },
   "nvim-web-devicons": { "branch": "master", "commit": "5b9067899ee6a2538891573500e8fd6ff008440f" },
   "nvim-window-picker": { "branch": "main", "commit": "41cfaa428577c53552200a404ae9b3a0b5719706" },
