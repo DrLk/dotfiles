@@ -18,6 +18,8 @@ rofi/*.rasi
 !Kvantum
 !Kvantum/**/*
 Kvantum/kvantum.kvconfig
+!sway
+!sway/**/*
 !wlogout
 !wlogout/**/*
 ~thefuck/settings.py
