@@ -11,6 +11,5 @@ Exec=/usr/lib/notification-daemon-1.0/notification-daemon
 ```
 
 
-##########
-#Themes
+### Themes
 https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme
