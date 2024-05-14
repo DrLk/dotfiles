@@ -39,7 +39,7 @@ window {
     fullscreen:                 false;
     enabled:                    true;
     border-radius:              12px;
-	background-image:           url("~/.config/rofi/.current_wallpaper", width);
+    background-color:           rgba(255, 255, 255, 0.6);
  	
 }
 
@@ -69,7 +69,7 @@ listbox {
     border-radius:              12px;
     border:                     1px;
     border-color:               @active-background;
-	background-color:		    @background;
+    background-color:           rgba(255, 255, 255, 0.5);
 }
 
 /* ---- Dummy ---- */
@@ -84,7 +84,7 @@ inputbar {
     spacing:                    10px;
     border-radius:              12px;
     border-color:               @foreground;
-	background-color:		    @background;
+    background-color:           rgba(255, 255, 255, 0.5);
     children:                   [ "textbox-prompt-colon","entry" ];
     border:                     1px;
     border-color:               @active-background;
@@ -121,7 +121,7 @@ mode-switcher{
 button {
     padding:                   0px 12px 0px 8px;
     border-radius:             12px;
-    background-color:          @background;
+    background-color:           rgba(255, 255, 255, 0.5);
     text-color:                inherit;
     cursor:                    pointer;
     border:                     1px;
