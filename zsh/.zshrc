@@ -118,7 +118,9 @@ if [ -x "$(command -v pgrep)" ]; then
     alias pgrep="pgrep -a"
 fi
 
-if [ -x "$(command -v find)" ]; then
+if [ -x "$(command -v fd)" ]; then
+    alias fd="fd --regex --hidden --no-ignore --ignore-case"
+else
     alias fd="find . | rg"
 fi
 
