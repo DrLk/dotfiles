@@ -71,7 +71,6 @@ require("lazy").setup({
     { "github/copilot.vim",                          lazy = true,                               event = "LspAttach" },
     { "sindrets/diffview.nvim" },
     { "lewis6991/gitsigns.nvim" },
-    { "NeogitOrg/neogit" },
 
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
     { "windwp/nvim-autopairs" },

@@ -140,5 +140,3 @@ gitsigns.setup {
     },
 }
 vim.keymap.set('n', '<leader>rb', function() gitsigns.blame_line { full = true } end)
-
-require('neogit').setup({})
