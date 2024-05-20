@@ -77,7 +77,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf-tab git gitfast zsh-syntax-highlighting zsh-autosuggestions command-not-found vi-mode ubuntu thefuck dnf)
+setopt globdots
+plugins=(fzf fzf-tab git gitfast zsh-syntax-highlighting zsh-autosuggestions command-not-found vi-mode ubuntu thefuck dnf)
 
 source $ZSH/oh-my-zsh.sh
 
