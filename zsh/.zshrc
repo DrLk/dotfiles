@@ -78,6 +78,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 setopt globdots
+zstyle ':completion:*' special-dirs false
+
 plugins=(fzf fzf-tab git gitfast zsh-syntax-highlighting zsh-autosuggestions command-not-found vi-mode ubuntu thefuck dnf)
 
 source $ZSH/oh-my-zsh.sh
