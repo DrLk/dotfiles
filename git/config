@@ -12,12 +12,16 @@
     # dark = true
     # light = true
 
+[help]
+    autocorrect = 1
+
 [merge]
     conflictstyle = diff3
 
 [diff]
     colorMoved = default
     algorithm = histogram
+
 [user]
 	email = ermakovich.andrew@gmail.com
 	name = Ermakovich Andrew
