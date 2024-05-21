@@ -77,8 +77,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-setopt globdots
-zstyle ':completion:*' special-dirs false
 
 plugins=(fzf fzf-tab git gitfast zsh-syntax-highlighting zsh-autosuggestions command-not-found vi-mode ubuntu thefuck dnf)
 
@@ -163,3 +161,6 @@ fi
 unzipall () {
     pids=(); for z in *.zip; do UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE unzip "$z" -d "${z%.*}" &; pids+=($!); done; for pid in "${pids[@]}"; do wait "${pid}"; done
 }
+
+setopt globdots
+zstyle ':completion:*' special-dirs false
