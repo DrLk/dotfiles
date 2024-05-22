@@ -74,7 +74,7 @@ gitsigns.setup {
                     vim.api.nvim_buf_set_lines(buf, last_line, -1, false, {})
                     vim.api.nvim_buf_set_lines(buf, 0, first_line - 1, false, {})
 
-                    vim.api.nvim_buf_set_option(buf, 'modifiable', false)
+                    vim.api.nvim_set_option_value('modifiable', false, { buf = buf })
                     vim.api.nvim_buf_set_keymap(buf, 'n', 'q', '', {
                         noremap = true,
                         silent = true,

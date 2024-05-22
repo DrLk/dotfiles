@@ -308,4 +308,13 @@ require("nvim-dap-virtual-text").setup {
                                            -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 }
 
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    callback = function(details)
+        if (vim.api.nvim_buf_line_count(details.buf) > 5000) then
+            vim.cmd("DapVirtualTextDisable")
+        else
+            vim.cmd("DapVirtualTextEnable")
+        end
+    end
+})
 -- require("dap.ext.vscode").load_launchjs(".nvim/launch.json", { lldb = { "c", "cpp", "rust" } })
