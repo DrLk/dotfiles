@@ -104,7 +104,6 @@ require("lazy").setup({
     { "RRethy/vim-illuminate",     lazy = true,                                     event = "LspAttach" },
     {
         "folke/trouble.nvim",
-        branch = "dev",
         dependencies = { "nvim-tree/nvim-web-devicons" }
     },
     {
