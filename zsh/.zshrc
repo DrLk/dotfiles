@@ -142,6 +142,10 @@ if [ -x "$(command -v nnn)" ]; then
     alias nnn="nnn -dTt"
 fi
 
+if [ -x "$(command -v icat)" ]; then
+    alias icat="kitten icat"
+fi
+
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
     export GIT_EDITOR=nvim
