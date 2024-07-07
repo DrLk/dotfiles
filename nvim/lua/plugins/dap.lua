@@ -4,7 +4,7 @@ vim.keymap.set("n", "<leader>i", function()
     dap.down()
 end, { desc = "Go down in current stacktrace without stepping." })
 
-vim.keymap.set("n", "<leader>o", function()
+vim.keymap.set("n", "<leader><S-i>", function()
     dap.up()
 end, { desc = "Go up in current stacktrace without stepping." })
 
