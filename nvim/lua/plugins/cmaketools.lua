@@ -19,7 +19,7 @@ local cmakeArgs = {
     cmake_generate_options = {
         "-DCMAKE_EXPORT_COMPILE_COMMANDS=1",
         "-G Ninja",
-        "-DBOOST_INSTALL_PREFIX=" .. os.getenv( "HOME" ) .. "/.local/boost/1.75",
+        -- "-DBOOST_INSTALL_PREFIX=" .. os.getenv( "HOME" ) .. "/.local/boost/1.75",
         "-DCHECK_GLIBC_SYMBOLS_VERSION=OFF",
         "-DSTATIC_LINK_FUSE=OFF",
         "-DSTATIC_LINK_ATOMIC=OFF",

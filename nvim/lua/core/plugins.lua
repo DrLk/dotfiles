@@ -74,7 +74,6 @@ require("lazy").setup({
 
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
     { "windwp/nvim-autopairs" },
-    { "terrortylor/nvim-comment" },
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
