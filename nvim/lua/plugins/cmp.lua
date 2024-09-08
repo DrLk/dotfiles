@@ -109,10 +109,6 @@ cmp.setup.cmdline(':', {
     sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } })
 })
 
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['tsserver'].setup { capabilities = capabilities }
-
 -- Disable autocomplete for 'log' files
 vim.api.nvim_create_autocmd("FileType", {
     desc = "disable autocomplete for 'log' files",
