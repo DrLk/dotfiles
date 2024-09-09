@@ -79,9 +79,6 @@ lspconfig.pyright.setup(
         }
     })
 
-lspconfig.tsserver.setup({})
-lspconfig.prismals.setup({})
-
 -- Function to get the path to clangd from Mason
 local function get_clangd_path()
     local mason_registry = require("mason-registry")
