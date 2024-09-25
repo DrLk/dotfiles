@@ -98,7 +98,7 @@ lspconfig.clangd.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = {
-        "clangd",
+        "/usr/bin/clangd",
         "--background-index",
         "-j=12",
         "--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
