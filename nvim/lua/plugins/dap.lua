@@ -237,7 +237,7 @@ require("dapui").setup({
             elements = {
                 "console",
             },
-            size = 10,
+            size = 20,
             position = "bottom", -- Can be "bottom" or "top"
         },
     },
