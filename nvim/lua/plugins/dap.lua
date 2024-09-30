@@ -274,6 +274,8 @@ require("dapui").setup({
 local dapui = require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
+    local console_bufnr = dapui.elements.console.buffer()
+    vim.bo[console_bufnr].filetype = "log"
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
     dapui.close()
