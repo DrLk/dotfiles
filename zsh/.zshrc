@@ -120,13 +120,17 @@ if [ -x "$(command -v pgrep)" ]; then
 fi
 
 if [ -x "$(command -v fd)" ]; then
-    alias fd="fd --regex --hidden --no-ignore --ignore-case"
+    alias fd="fd --regex --hidden --no-ignore --ignore-case --color=always"
 else
     alias fd="find . | rg"
 fi
 
 if [ -x "$(command -v rg)" ]; then
-    alias rg="rg --no-heading"
+    alias rg="rg --no-heading --color=always"
+fi
+
+if [ -x "$(command -v grep)" ]; then
+    alias grep="grep --color=always"
 fi
 
 if [ -x "$(command -v eza)" ]; then
