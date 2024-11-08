@@ -119,15 +119,39 @@ if [ -x "$(command -v pgrep)" ]; then
     alias pgrep="pgrep -a"
 fi
 
+myfd() {
+   if [ -f /dev/stdout ]; then
+     fd --regex --hidden --no-ignore --ignore-case --color=never
+   else
+     fd --regex --hidden --no-ignore --ignore-case --color=always
+   fi
+}
+
 if [ -x "$(command -v fd)" ]; then
-    alias fd="fd --regex --hidden --no-ignore --ignore-case --color=always"
+    alias fd="myfd"
 else
     alias fd="find . | rg"
 fi
 
+myrg() {
+   if [ -f /dev/stdout ]; then
+     rg --no-heading --color=never "$@"
+   else
+      rg --no-heading --color=always "$@"
+   fi
+}
+
 if [ -x "$(command -v rg)" ]; then
-    alias rg="rg --no-heading --color=always"
+    alias rg="myrg"
 fi
+
+mygrep() {
+   if [ -f /dev/stdout ]; then
+      grep --color=never "$@"
+   else
+      grep --color=always "$@"
+   fi
+}
 
 if [ -x "$(command -v grep)" ]; then
     alias grep="grep --color=always"
