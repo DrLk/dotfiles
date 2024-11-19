@@ -188,10 +188,13 @@ if [ -x "$(command -v clang++)" ]; then
     export CXX=clang++
 fi
 
-
 if [ -x "$(command -v zoxide)" ]; then
     eval "$(zoxide init zsh)"
     alias cd="z"
+fi
+
+if [ -x "$(command -v htop)" ]; then
+    alias top="htop"
 fi
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
