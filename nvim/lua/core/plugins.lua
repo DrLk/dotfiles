@@ -108,7 +108,6 @@ require("lazy").setup({
     {
         "folke/noice.nvim",
         event = "VeryLazy",
-        tag = "v4.4.7",
         dependencies = {
             { "rcarriga/nvim-notify" },
             { "MunifTanjim/nui.nvim", },

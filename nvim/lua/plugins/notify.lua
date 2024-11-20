@@ -1,3 +1,8 @@
+require("notify").setup({
+    render = "wrapped-compact",
+    stages = "no_animation", -- <==== This is the workaround
+})
+
 require("noice").setup({
     routes = {
         {
