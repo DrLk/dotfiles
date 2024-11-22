@@ -1,3 +1,7 @@
+require("notify").setup({
+    stages = "no_animation", -- <==== This is the workaround
+})
+
 require("noice").setup({
     routes = {
         {
