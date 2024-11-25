@@ -158,9 +158,48 @@ lspconfig.rust_analyzer.setup({
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<leader>lD", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end)
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end)
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist)
+
+local function dorename(win)
+    local new_name = vim.trim(vim.fn.getline('.'))
+    vim.api.nvim_win_close(win, true)
+    vim.lsp.buf.rename(new_name)
+end
+
+local function rename()
+    local opts = {
+        relative = 'cursor',
+        row = 1,
+        col = 0,
+        width = 30,
+        height = 1,
+        style = 'minimal',
+        border = 'rounded',
+        title_pos = 'center',
+        title = 'Rename To'
+    }
+    local cword = vim.fn.expand('<cword>')
+    local buf = vim.api.nvim_create_buf(false, true)
+    local win = vim.api.nvim_open_win(buf, true, opts)
+    local fmt = '<cmd>lua Rename.dorename(%d)<CR>'
+
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { cword })
+    vim.api.nvim_buf_set_keymap(buf, 'i', '<CR>', string.format(fmt, win), { silent = true })
+    vim.api.nvim_buf_set_keymap(buf, 'n', '<CR>', string.format(fmt, win), { silent = true })
+    vim.api.nvim_buf_set_keymap(buf, 'n', 'q', ":close!<CR>", { silent = true })
+    vim.api.nvim_buf_set_keymap(buf, 'n', '<ESC>', ":close!<CR>", { silent = true })
+end
+
+_G.Rename = {
+    rename = rename,
+    dorename = dorename
+}
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -182,8 +221,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set('n', '<Leader>sl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
-        -- vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
-        -- vim.keymap.set("n", "<Leader>lr", vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set("n", "<Leader>lr", Rename.rename, opts)
         vim.keymap.set({ "n", "v" }, "<Leader>la", vim.lsp.buf.code_action, opts)
         -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         -- vim.keymap.set("n", "<Leader>lf", function()

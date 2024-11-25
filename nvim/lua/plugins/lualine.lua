@@ -39,7 +39,7 @@ require('lualine').setup {
     sections = {
         lualine_a = {{'mode', separator = {left = ''}, right_padding = 2}},
         lualine_b = {
-            { 'filename', path = 1}, 'branch', require("lsp-progress").progress
+            { 'filename', path = 1 }, 'branch'
         },
         lualine_c = {'fileformat'},
         lualine_x = {},

@@ -26,13 +26,6 @@ require("lazy").setup({
     { "nvim-treesitter/nvim-treesitter" },
     { "neovim/nvim-lspconfig" },
     {
-        "nvimdev/lspsaga.nvim",
-        dependencies = {
-            { 'nvim-treesitter/nvim-treesitter' },
-            { 'nvim-tree/nvim-web-devicons' }
-        }
-    },
-    {
         "hrsh7th/nvim-cmp",
         dependencies = {
             { "onsails/lspkind.nvim" },
@@ -53,7 +46,6 @@ require("lazy").setup({
         "nvim-lualine/lualine.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
-            "linrongbin16/lsp-progress.nvim",
         },
     },
     { "williamboman/mason.nvim",         build = ":MasonUpdate" },
@@ -86,14 +78,6 @@ require("lazy").setup({
         },
     },
     { "akinsho/bufferline.nvim",   dependencies = { "nvim-tree/nvim-web-devicons" } },
-    {
-        "linrongbin16/lsp-progress.nvim",
-        event = { "VimEnter" },
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("lsp-progress").setup({})
-        end,
-    },
     { "mtdl9/vim-log-highlighting" },
     { "joanrivera/vim-highlight" },
     { "folke/tokyonight.nvim" },
