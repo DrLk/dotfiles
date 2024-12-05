@@ -121,9 +121,9 @@ fi
 
 myfd() {
    if [ -f /dev/stdout ]; then
-     fd --regex --hidden --no-ignore --ignore-case --color=never
+     fd --regex --hidden --no-ignore --ignore-case --color=never "$@"
    else
-     fd --regex --hidden --no-ignore --ignore-case --color=always
+     fd --regex --hidden --no-ignore --ignore-case --color=always "$@"
    fi
 }
 
@@ -137,7 +137,7 @@ myrg() {
    if [ -f /dev/stdout ]; then
      rg --no-heading --color=never "$@"
    else
-      rg --no-heading --color=always "$@"
+     rg --no-heading --color=always "$@"
    fi
 }
 
@@ -154,7 +154,7 @@ mygrep() {
 }
 
 if [ -x "$(command -v grep)" ]; then
-    alias grep="grep --color=always"
+    alias grep="mygrep"
 fi
 
 if [ -x "$(command -v eza)" ]; then
