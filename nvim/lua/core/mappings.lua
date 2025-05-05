@@ -32,8 +32,8 @@ vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
 
 -- Clipboard functionality (don't copy deleted text)
-vim.api.nvim_set_keymap('n', 'd', '"dd', { noremap = true })
-vim.api.nvim_set_keymap('n', 'x', '"xx', { noremap = true })
+vim.api.nvim_set_keymap('n', 'd', '"dd', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'x', '"xx', { noremap = true, silent = true })
 
 -- Quickfix
 local function quickfix()
