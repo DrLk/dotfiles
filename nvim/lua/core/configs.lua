@@ -58,15 +58,17 @@ vim.opt.fillchars = {
 
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	pattern = { "*" },
-	callback = function()
-        if (vim.bo.filetype ~= "log") then
+	callback = function(opts)
+        if (vim.bo.filetype == "text") then
+            vim.bo.filetype = "log"
+        end
+
+        if (vim.api.nvim_buf_line_count(opts.buf) < 10000) then
             vim.opt.undofile = true
         end
+
 		if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
             vim.api.nvim_exec2("normal! g'\"", { output = false })
 		end
 	end,
 })
-
-vim.cmd([[highlight clear LineNr]])
-vim.cmd([[highlight clear SignColumn]])
