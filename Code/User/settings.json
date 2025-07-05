@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "Tokyo Night",
     "editor.fontFamily": "'FiraCode Nerd Font'",
     "editor.fontSize": 12,
     "editor.fontLigatures": true,
@@ -44,5 +43,6 @@
     "tabnine.experimentalAutoImports": true,
     "cmake.showOptionsMovedNotification": false,
 
-    "C_Cpp.intelliSenseEngine": "disabled"
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "workbench.colorTheme": "Tokyo Night"
 }
