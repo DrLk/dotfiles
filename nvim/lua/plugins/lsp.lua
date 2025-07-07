@@ -7,6 +7,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
         vim.lsp.buf.format({
             bufnr = bufnr,
+            async = true,
         })
         -- vim.lsp.buf.formatting_sync()
     end, {})
@@ -19,45 +20,61 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>", { silent = true, desc = "Format modifications" })
 end
 local lspconfig = require("lspconfig")
-lspconfig.pylsp.setup({
+-- lspconfig.pylsp.setup({
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     settings = {
+--         pylsp = {
+--             plugins = {
+--                 -- formatter options
+--                 black = { enabled = false },
+--                 autopep8 = {
+--                     enabled = false,
+--                 },
+--                 yapf = {
+--                     enabled = false,
+--                     -- args = "--style='{ based_on_style: pep8, column_limit: 120 }'"
+--                 },
+--                 -- linter options
+--                 pylint = { enabled = false, executable = "pylint" },
+--                 ruff = { enabled = true },
+--                 pyflakes = { enabled = false },
+--                 mccabe = { enabled = false},
+--                 pycodestyle = {
+--                     enabled = true,
+--                     maxLineLength = 100
+--                 },
+--                 -- type checker
+--                 pylsp_mypy = {
+--                     enabled = false,
+--                     -- overrides = { "--python-executable", py_path, true },
+--                     report_progress = false,
+--                     live_mode = false
+--                 },
+--                 -- auto-completion options
+--                 jedi_completion = {
+--                     enabled = false,
+--                     fuzzy = true,
+--                 },
+--                 -- import sorting
+--                 isort = { enabled = true },
+--             },
+--         },
+--     },
+-- })
+
+vim.g.ale_linters = {
+    python = { 'pycodestyle' },
+}
+
+local null_ls = require("null-ls")
+null_ls.setup({
     on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        pylsp = {
-            plugins = {
-                -- formatter options
-                black = { enabled = false },
-                autopep8 = {
-                    enabled = false,
-                },
-                yapf = {
-                    enabled = true,
-                    -- args = "--style='{ based_on_style: pep8, column_limit: 120 }'"
-                },
-                -- linter options
-                pylint = { enabled = true, executable = "pylint" },
-                ruff = { enabled = true },
-                pyflakes = { enabled = true },
-                pycodestyle = {
-                    enabled = true,
-                    maxLineLength = 100
-                },
-                -- type checker
-                pylsp_mypy = {
-                    enabled = false,
-                    -- overrides = { "--python-executable", py_path, true },
-                    report_progress = false,
-                    live_mode = false
-                },
-                -- auto-completion options
-                jedi_completion = {
-                    enabled = false,
-                    fuzzy = true,
-                },
-                -- import sorting
-                isort = { enabled = true },
-            },
-        },
+    sources = {
+        null_ls.builtins.formatting.yapf.with({
+            extra_args = { "--style", "{based_on_style: pep8, column_limit: 120}" },
+        }),
+        null_ls.builtins.diagnostics.pylint
     },
 })
 

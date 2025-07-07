@@ -31,6 +31,8 @@ require("lazy").setup({
         event = "LspAttach",
     },
     { "neovim/nvim-lspconfig" },
+    { "dense-analysis/ale" },
+    { "nvimtools/none-ls.nvim",         dependencies = { "nvim-lua/plenary.nvim" } },
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -54,7 +56,11 @@ require("lazy").setup({
             "nvim-tree/nvim-web-devicons",
         },
     },
-    { "williamboman/mason.nvim",         build = ":MasonUpdate" },
+    {
+        "williamboman/mason.nvim",
+        dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+        build = ":MasonUpdate"
+    },
     {
         "mfussenegger/nvim-dap",
         dependencies = {
