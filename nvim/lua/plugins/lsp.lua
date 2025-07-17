@@ -78,21 +78,37 @@ null_ls.setup({
     },
 })
 
-lspconfig.pyright.setup(
+-- lspconfig.pyright.setup(
+--     {
+--         settings = {
+--             pyright = {
+--                 autoImportCompletion = true,
+--             },
+--             python = {
+--                 analysis =
+--                 {
+--                     autoSearchPaths = true,
+--                     diagnosticMode = 'openFilesOnly',
+--                     useLibraryCodeForTypes = true,
+--                     typeCheckingMode = 'off'
+--                 }
+--             }
+--         }
+--     })
+
+lspconfig.basedpyright.setup(
     {
         settings = {
-            pyright = {
+            basedpyright = {
                 autoImportCompletion = true,
-            },
-            python = {
                 analysis =
                 {
                     autoSearchPaths = true,
                     diagnosticMode = 'openFilesOnly',
                     useLibraryCodeForTypes = true,
-                    typeCheckingMode = 'off'
-                }
-            }
+                    typeCheckingMode = 'basic'
+                },
+            },
         }
     })
 

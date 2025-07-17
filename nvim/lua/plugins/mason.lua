@@ -3,7 +3,7 @@ require("mason").setup()
 require("mason-tool-installer").setup({
     ensure_installed = {
         "yapf",
-        "pyright",
+        "basedpyright",
         "pylint",
         "beautysh",
         "neocmakelsp",
