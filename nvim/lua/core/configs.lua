@@ -8,6 +8,7 @@ vim.opt.updatetime = 100
 vim.wo.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.wrap = true
+vim.opt.smoothscroll = true
 vim.opt.linebreak = true
 vim.opt.textwidth = 120
 vim.wo.linebreak = true

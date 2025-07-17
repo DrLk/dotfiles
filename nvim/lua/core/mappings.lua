@@ -48,6 +48,3 @@ vim.keymap.set("n", "<leader>q", quickfix, opt)
 
 -- Quit
 vim.keymap.set("n", "<leader>Q", ":qa!<CR>", opt)
-
-vim.keymap.set('', '<ScrollWheelUp>', '3gk', { noremap = true, silent = true })
-vim.keymap.set('', '<ScrollWheelDown>', '3gj', { noremap = true, silent = true })
