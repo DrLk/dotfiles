@@ -74,7 +74,13 @@ require("lazy").setup({
     -- { "codota/tabnine-nvim",                         build = "./dl_binaries.sh" },
     { "github/copilot.vim",                          lazy = true,                               event = "LspAttach" },
     { "sindrets/diffview.nvim" },
-    { "lewis6991/gitsigns.nvim" },
+    -- { "lewis6991/gitsigns.nvim" },
+    {
+        'tanvirtin/vgit.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' },
+        -- Lazy loading on 'LspAttach' event is necessary.
+        event = 'LspAttach',
+    },
 
     { "akinsho/toggleterm.nvim",                     version = "*",                             config = true },
     { "windwp/nvim-autopairs" },
