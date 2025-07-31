@@ -63,6 +63,7 @@ local lspconfig = require("lspconfig")
 --     },
 -- })
 
+vim.g.ale_echo_cursor = 0
 vim.g.ale_linters = {
     python = { 'pycodestyle' },
 }
