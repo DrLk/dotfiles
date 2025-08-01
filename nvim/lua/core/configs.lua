@@ -12,6 +12,7 @@ vim.opt.smoothscroll = true
 vim.opt.linebreak = true
 vim.opt.textwidth = 120
 vim.wo.linebreak = true
+vim.opt.swapfile = false
 
 vim.opt.virtualedit = "block"
 vim.opt.shell = "/bin/zsh"
