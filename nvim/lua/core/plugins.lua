@@ -117,7 +117,7 @@ require("lazy").setup({
         }
     },
     { "natecraddock/workspaces.nvim", dependencies = { "natecraddock/sessions.nvim" } },
-    -- { "echasnovski/mini.animate" },
-    { "sphamba/smear-cursor.nvim" },
+    { "echasnovski/mini.animate" },
+    -- { "sphamba/smear-cursor.nvim" },
     { "karb94/neoscroll.nvim" },
 })

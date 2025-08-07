@@ -1,42 +1,42 @@
--- local animate = require('mini.animate')
--- animate.setup({
---     cursor = {
---         -- Animate for 200 milliseconds with linear easing
---         timing = animate.gen_timing.linear({ duration = 150, unit = 'total' }),
---
---         -- Animate with shortest line for any cursor move
---         path = animate.gen_path.line({
---             predicate = function() return true end,
---         }),
---     },
---     -- Vertical scroll
---     scroll = {
---         -- Whether to enable this animation
---         enable = false,
---     }
--- })
+local animate = require('mini.animate')
+animate.setup({
+    cursor = {
+        -- Animate for 200 milliseconds with linear easing
+        timing = animate.gen_timing.linear({ duration = 150, unit = 'total' }),
 
-local cursor = require('smear_cursor')
-
-cursor.setup({
-    -- Smear cursor when switching buffers or windows.
-    smear_between_buffers = true,
-
-    -- Smear cursor when moving within line or to neighbor lines.
-    -- Use `min_horizontal_distance_smear` and `min_vertical_distance_smear` for finer control
-    smear_between_neighbor_lines = true,
-
-    -- Draw the smear in buffer space instead of screen space when scrolling
-    scroll_buffer_space = true,
-
-    -- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
-    -- Smears will blend better on all backgrounds.
-    legacy_computing_symbols_support = false,
-
-    -- Smear cursor in insert mode.
-    -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
-    smear_insert_mode = true,
+        -- Animate with shortest line for any cursor move
+        path = animate.gen_path.line({
+            predicate = function() return true end,
+        }),
+    },
+    -- Vertical scroll
+    scroll = {
+        -- Whether to enable this animation
+        enable = false,
+    }
 })
+
+-- local cursor = require('smear_cursor')
+--
+-- cursor.setup({
+--     -- Smear cursor when switching buffers or windows.
+--     smear_between_buffers = true,
+--
+--     -- Smear cursor when moving within line or to neighbor lines.
+--     -- Use `min_horizontal_distance_smear` and `min_vertical_distance_smear` for finer control
+--     smear_between_neighbor_lines = true,
+--
+--     -- Draw the smear in buffer space instead of screen space when scrolling
+--     scroll_buffer_space = true,
+--
+--     -- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
+--     -- Smears will blend better on all backgrounds.
+--     legacy_computing_symbols_support = false,
+--
+--     -- Smear cursor in insert mode.
+--     -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
+--     smear_insert_mode = true,
+-- })
 
 
 require('neoscroll').setup({
