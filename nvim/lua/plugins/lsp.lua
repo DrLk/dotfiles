@@ -68,14 +68,21 @@ vim.g.ale_linters = {
     python = { 'pycodestyle' },
 }
 
+local home = vim.fn.expand("~")
 local null_ls = require("null-ls")
 null_ls.setup({
     on_attach = on_attach,
     sources = {
+        args = {
+            "--python-interpreter",
+            home .. ".venv/bin/python",
+            "--from-stdin",
+            "$FILENAME",
+        },
         null_ls.builtins.formatting.yapf.with({
             extra_args = { "--style", "{based_on_style: pep8, column_limit: 120}" },
         }),
-        null_ls.builtins.diagnostics.pylint
+        -- null_ls.builtins.diagnostics.pylint
     },
 })
 
@@ -100,6 +107,11 @@ null_ls.setup({
 lspconfig.basedpyright.setup(
     {
         settings = {
+            python = {
+                pythonPath = home .. "/.venv/bin/python",
+                -- venvPath = home .. "/.venv",
+                -- venv = ".venv"
+            },
             basedpyright = {
                 autoImportCompletion = true,
                 analysis =
