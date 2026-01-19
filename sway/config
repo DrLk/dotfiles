@@ -30,3 +30,4 @@ include /etc/sway/config.d/*
 
 # user config
 include $HOME/.config/sway/config.d/*.conf
+focus_follows_mouse no
