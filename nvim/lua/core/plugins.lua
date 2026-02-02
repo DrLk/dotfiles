@@ -100,8 +100,7 @@ require("lazy").setup({
     { "joanrivera/vim-highlight" },
     { "folke/tokyonight.nvim" },
     { "folke/which-key.nvim" },
-    { "ggandor/leap.nvim" },
-    { "ggandor/flit.nvim",         dependencies = { "ggandor/leap.nvim" } },
+    { url = "https://codeberg.org/andyg/leap.nvim" },
     { "RRethy/vim-illuminate",     lazy = true,                                     event = "LspAttach" },
     {
         "folke/trouble.nvim",

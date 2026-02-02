@@ -6,16 +6,12 @@ leap.add_repeat_mappings(';', ',', {
     -- relation to the last motion.
     relative_directions = true,
     -- By default, all modes are included.
-    modes = { 'n', 'x', 'o' },
+    modes = { 'n', 'v', 'x', 'o' },
 })
 
-local flit = require('flit')
-flit.setup({
-    keys = { f = 'f', F = 'F', t = 't', T = 'T' },
-    -- A string like "nv", "nvo", "o", etc.
-    labeled_modes = "nvo",
-    multiline = true,
-    -- Like `leap`s similar argument (call-specific overrides).
-    -- E.g.: opts = { equivalence_classes = {} }
-    opts = {}
-})
+local map = vim.keymap.set
+
+map({ 'n', 'v' }, 'f', function() leap.leap({ inputlen = 1 }) end, { desc = 'Leap forward search' })
+map({ 'n', 'v' }, 'F', function() leap.leap({ inputlen = 1, backward = true  }) end, { desc = 'Leap backward search' })
+map({ 'n', 'v' }, 't', function() leap.leap({ inputlen = 1 }) end, { desc = 'Leap forward with ahead search' })
+map({ 'n', 'v' }, 'T', function() leap.leap({ inputlen = 1, backward = true  }) end, { desc = 'Leap backward with ahead search' })
