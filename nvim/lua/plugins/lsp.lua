@@ -161,7 +161,11 @@ lspconfig.clangd.setup({
         -- "--compile-commands-dir=./"
     },
 })
-lspconfig.neocmake.setup({})
+vim.lsp.config("neocmake", {
+    -- Some config
+    -- If none, just enable it
+})
+vim.lsp.enable("neocmake")
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
