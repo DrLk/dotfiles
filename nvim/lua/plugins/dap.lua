@@ -193,7 +193,11 @@ dap.configurations.python = {
             end
         end,
         cwd = "${workspaceFolder}",
-        args = {},
+        console = "integratedTerminal",
+        args = function()
+            local input = vim.fn.input("Args: ")
+            return vim.split(input, " ", { trimempty = true })
+        end,
     }
 }
 require("dapui").setup({
