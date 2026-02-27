@@ -73,12 +73,6 @@ local null_ls = require("null-ls")
 null_ls.setup({
     on_attach = on_attach,
     sources = {
-        args = {
-            "--python-interpreter",
-            home .. ".venv/bin/python",
-            "--from-stdin",
-            "$FILENAME",
-        },
         null_ls.builtins.formatting.yapf.with({
             extra_args = { "--style", "{based_on_style: pep8, column_limit: 120}" },
         }),
@@ -128,16 +122,21 @@ lspconfig.basedpyright.setup(
 -- Function to get the path to clangd from Mason
 local function get_clangd_path()
     local mason_registry = require("mason-registry")
-    local clangd_root = mason_registry.get_package("clangd"):get_install_path()
+    local ok, pkg = pcall(mason_registry.get_package, "clangd")
+    if not ok or not pkg then
+        return "clangd"
+    end
+    local clangd_root = pkg:get_install_path()
     local bin_path = ""
-    mason_registry.get_package("clangd"):get_receipt()
-        :if_present(
+    pkg:get_receipt():if_present(
         ---@param receipt InstallReceipt
-            function(receipt)
-                bin_path = receipt.links.bin["clangd"]
-            end
-        )
-
+        function(receipt)
+            bin_path = receipt.links.bin["clangd"]
+        end
+    )
+    if bin_path == "" then
+        return "clangd"
+    end
     return vim.fn.resolve(clangd_root .. "/" .. bin_path)
 end
 lspconfig.clangd.setup({
@@ -161,11 +160,10 @@ lspconfig.clangd.setup({
         -- "--compile-commands-dir=./"
     },
 })
-vim.lsp.config("neocmake", {
-    -- Some config
-    -- If none, just enable it
+lspconfig.neocmake.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
 })
-vim.lsp.enable("neocmake")
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -237,7 +235,7 @@ local function rename()
     local cword = vim.fn.expand('<cword>')
     local buf = vim.api.nvim_create_buf(false, true)
     local win = vim.api.nvim_open_win(buf, true, opts)
-    local fmt = '<cmd>lua Rename.dorename(%d)<CR>'
+    local fmt = '<cmd>LspDoRename %d<CR>'
 
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, { cword })
     vim.api.nvim_buf_set_keymap(buf, 'i', '<CR>', string.format(fmt, win), { silent = true })
@@ -246,10 +244,9 @@ local function rename()
     vim.api.nvim_buf_set_keymap(buf, 'n', '<ESC>', ":close!<CR>", { silent = true })
 end
 
-_G.Rename = {
-    rename = rename,
-    dorename = dorename
-}
+vim.api.nvim_create_user_command("LspDoRename", function(args)
+    dorename(tonumber(args.args))
+end, { nargs = 1 })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -272,7 +269,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
         vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set("n", "<Leader>lr", Rename.rename, opts)
+        vim.keymap.set("n", "<Leader>lr", rename, opts)
         vim.keymap.set({ "n", "v" }, "<Leader>la", vim.lsp.buf.code_action, opts)
         -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         -- vim.keymap.set("n", "<Leader>lf", function()
