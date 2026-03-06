@@ -107,7 +107,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     changedelete = { text = '~' },
                     untracked    = { text = '┆' },
                 },
-                show_deleted                 = true,
                 signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
                 numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
                 linehl                       = true,  -- Toggle with `:Gitsigns toggle_linehl`
@@ -125,7 +124,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 current_line_blame_opts      = {
                     virt_text = true,
                     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-                    delay = 1000,
+                    delay = 700,
                     ignore_whitespace = false,
                     virt_text_priority = 100,
                 },
