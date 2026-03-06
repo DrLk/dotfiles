@@ -38,19 +38,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
                     map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
                     map('n', '<leader>hS', gitsigns.stage_buffer)
-                    map('n', '<leader>hu', gitsigns.undo_stage_hunk)
+                    map('n', '<leader>hu', function() gitsigns.stage_hunk() end) -- unstage: navigate to staged hunk first
                     map('n', '<leader>hR', gitsigns.reset_buffer)
                     map('n', '<leader>hp', gitsigns.preview_hunk)
                     map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
                     map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
                     map('n', '<leader>hd', gitsigns.diffthis)
                     map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
-                    map('n', '<leader>td', gitsigns.toggle_deleted)
+                    map('n', '<leader>td', gitsigns.preview_hunk_inline)
 
                     vim.keymap.set("n", "<leader>rr", function()
                         gitsigns.preview_hunk_inline()
-                        local deleted = require('gitsigns.config').config.show_deleted
-                        gitsigns.toggle_deleted(false)
 
                         vim.defer_fn(function()
                             -- Get the current window ID
@@ -86,7 +84,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
                                     noremap = true,
                                     silent = true,
                                     callback = function()
-                                        gitsigns.toggle_deleted(deleted)
                                         vim.api.nvim_input('<C-w>q')
                                     end
                                 })
@@ -119,6 +116,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     follow_files = true
                 },
                 auto_attach                  = true,
+                signs_staged_enable          = true,
                 attach_to_untracked          = false,
                 current_line_blame           = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
                 current_line_blame_opts      = {
