@@ -30,6 +30,7 @@ vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=40<CR>", 
 -- Clipboard functionality (paste from system)
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
+vim.keymap.set({ "n", "v", "i" }, "<S-Insert>", '"+p')
 
 -- Clipboard functionality (don't copy deleted text)
 vim.api.nvim_set_keymap('n', 'd', '"dd', { noremap = true, silent = true })
