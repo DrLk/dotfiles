@@ -113,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 
 export GIT_EDITOR=vim
 export EDITOR=vim
-export PATH=$HOME/.local/bin:$PATH
+[[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH=$HOME/.local/bin:$PATH
 
 if [ -x "$(command -v pgrep)" ]; then
     alias pgrep="pgrep -a"
