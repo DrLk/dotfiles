@@ -22,4 +22,6 @@ Kvantum/kvantum.kvconfig
 !sway/**/*
 !wlogout
 !wlogout/**/*
+!claude-docker
+!claude-docker/**/*
 ~thefuck/settings.py
