@@ -161,6 +161,7 @@ lspconfig.clangd.setup({
     },
 })
 lspconfig.neocmake.setup({
+    cmd = { "neocmakelsp", "stdio" },
     on_attach = on_attach,
     capabilities = capabilities,
 })
