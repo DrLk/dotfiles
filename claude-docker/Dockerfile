@@ -7,6 +7,13 @@ RUN pacman -Syu --noconfirm \
     nodejs \
     npm \
     docker \
+    python \
+    gcc \
+    mold \
+    make \
+    cmake \
+    ninja \
+    fuse3 \
  && pacman -Scc --noconfirm
 
 RUN npm install -g @anthropic-ai/claude-code
