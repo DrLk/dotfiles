@@ -7,6 +7,7 @@
       "Bash(grep *)",
       "Bash(rg *)",
       "Bash(git *)",
+      "Bash(git diff *)",
       "Bash(find *)",
       "Bash(wc *)",
       "Bash(head *)",

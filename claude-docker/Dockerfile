@@ -6,6 +6,7 @@ RUN pacman -Syu --noconfirm \
     curl \
     nodejs \
     npm \
+    docker \
  && pacman -Scc --noconfirm
 
 RUN npm install -g @anthropic-ai/claude-code
