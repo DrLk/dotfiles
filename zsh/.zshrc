@@ -211,3 +211,17 @@ unzipall () {
 
 setopt globdots
 zstyle ':completion:*' special-dirs false
+
+# Sync ~/.claude config files from ~/.config/claude via symlinks
+() {
+    local config_dir="$HOME/.config/claude"
+    local claude_dir="$HOME/.claude"
+    local files=(settings.json plugins/installed_plugins.json plugins/known_marketplaces.json)
+    for f in "${files[@]}"; do
+        local src="$config_dir/$f"
+        local dst="$claude_dir/$f"
+        mkdir -p "$(dirname "$src")" "$(dirname "$dst")"
+        [[ ! -e "$src" && -e "$dst" && ! -L "$dst" ]] && cp "$dst" "$src"
+        [[ ! -L "$dst" || "$(readlink "$dst")" != "$src" ]] && ln -sf "$src" "$dst"
+    done
+}
