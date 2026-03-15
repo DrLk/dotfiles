@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls *)",
+      "Bash(cmake *)",
+      "Bash(cat *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(git *)",
+      "Bash(find *)",
+      "Bash(wc *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(diff *)",
+      "Bash(file *)",
+      "Bash(echo *)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(env)",
+      "Bash(printenv *)",
+      "Bash(make *)",
+      "Bash(ninja *)",
+      "Bash(cp *)",
+      "Bash(mkdir *)",
+      "Bash(touch *)",
+      "Bash(clang-format *)",
+      "Bash(clang-tidy *)"
+    ]
+  },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "github@claude-plugins-official": true
+  }
+}

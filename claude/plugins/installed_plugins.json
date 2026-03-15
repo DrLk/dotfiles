@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "plugins": {
+    "clangd-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/ermakovich/.claude/plugins/cache/claude-plugins-official/clangd-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-02-28T21:47:19.179Z",
+        "lastUpdated": "2026-02-28T21:47:19.179Z",
+        "gitCommitSha": "55b58ec6e5649104f926ba7558b567dc8d33c5ff"
+      }
+    ],
+    "pyright-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/ermakovich/.claude/plugins/cache/claude-plugins-official/pyright-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-15T00:15:03.753Z",
+        "lastUpdated": "2026-03-15T00:15:03.753Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "github@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/ermakovich/.claude/plugins/cache/claude-plugins-official/github/d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-15T00:18:16.211Z",
+        "lastUpdated": "2026-03-15T00:18:16.211Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ]
+  }
+}
