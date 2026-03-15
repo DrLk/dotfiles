@@ -10,6 +10,8 @@ RUN pacman -Syu --noconfirm \
 
 RUN npm install -g @anthropic-ai/claude-code
 
+RUN git config --system --add safe.directory /workspace
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
