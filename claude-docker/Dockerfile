@@ -1,4 +1,12 @@
-FROM node:22-slim
+FROM archlinux:latest
+
+RUN pacman -Syu --noconfirm \
+    git \
+    ca-certificates \
+    curl \
+    nodejs \
+    npm \
+ && pacman -Scc --noconfirm
 
 RUN npm install -g @anthropic-ai/claude-code
 
