@@ -19,6 +19,9 @@ fi
 
 docker run -it --rm \
     --security-opt label=disable \
+    --privileged \
+    --network=host \
+    --device /dev/fuse \
     -u "$(id -u):$(id -g)" \
     --group-add "$(stat -c '%g' "$DOCKER_SOCK")" \
     -v "$(pwd):/workspace" \

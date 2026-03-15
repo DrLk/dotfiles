@@ -16,6 +16,9 @@ RUN pacman -Syu --noconfirm \
     fuse3 \
  && pacman -Scc --noconfirm
 
+ENV CC=clang
+ENV CXX=clang++
+
 RUN npm install -g @anthropic-ai/claude-code
 
 RUN git config --system --add safe.directory /workspace
