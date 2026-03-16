@@ -29,4 +29,6 @@ Kvantum/kvantum.kvconfig
 !claude/plugins/known_marketplaces.json
 !claude-docker
 !claude-docker/**/*
+!tmux
+!tmux/**/*
 ~thefuck/settings.py
