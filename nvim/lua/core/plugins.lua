@@ -96,7 +96,6 @@ require("lazy").setup({
     },
     { "akinsho/bufferline.nvim",   dependencies = { "nvim-tree/nvim-web-devicons" } },
     { "mtdl9/vim-log-highlighting" },
-    { "joanrivera/vim-highlight" },
     { "folke/tokyonight.nvim" },
     { "folke/which-key.nvim" },
     { url = "https://codeberg.org/andyg/leap.nvim" },
