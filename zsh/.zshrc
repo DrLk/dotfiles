@@ -111,8 +111,6 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-export GIT_EDITOR=vim
-export EDITOR=vim
 [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH=$HOME/.local/bin:$PATH
 
 if [ -x "$(command -v pgrep)" ]; then
@@ -190,6 +188,9 @@ if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
     export GIT_EDITOR=nvim
     export EDITOR=nvim
+else
+    export GIT_EDITOR=vim
+    export EDITOR=vim
 fi
 
 if [ -x "$(command -v clang)" ]; then
