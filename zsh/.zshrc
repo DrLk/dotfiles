@@ -119,8 +119,16 @@ if [ -x "$(command -v pgrep)" ]; then
     alias pgrep="pgrep -a"
 fi
 
+colorstrip() {
+    sed 's/\x1b\[[0-9;]*m//g'
+}
+
+_color_output() {
+    [ -t 1 ] || [ -p /dev/stdout ]
+}
+
 myfd() {
-   if [ -t 1 ]; then
+   if _color_output; then
      command fd --regex --hidden --no-ignore --ignore-case --color=always "$@"
    else
      command fd --regex --hidden --no-ignore --ignore-case --color=never "$@"
@@ -134,10 +142,10 @@ else
 fi
 
 myrg() {
-   if [ -t 1 ]; then
+   if _color_output; then
      command rg --no-heading --color=always "$@"
    else
-     command rg --no-heading --color=never "$@"
+     command rg --no-heading --color=never "$@" | colorstrip
    fi
 }
 
@@ -146,16 +154,36 @@ if [ -x "$(command -v rg)" ]; then
 fi
 
 mygrep() {
-   if [ -t 1 ]; then
+   if _color_output; then
       command grep --color=always "$@"
    else
-      command grep --color=never "$@"
+      command grep --color=never "$@" | colorstrip
    fi
 }
 
 if [ -x "$(command -v grep)" ]; then
     alias grep="mygrep"
 fi
+
+myhead() {
+   if _color_output; then
+      command head "$@"
+   else
+      command head "$@" | colorstrip
+   fi
+}
+
+alias head="myhead"
+
+mytail() {
+   if _color_output; then
+      command tail "$@"
+   else
+      command tail "$@" | colorstrip
+   fi
+}
+
+alias tail="mytail"
 
 if [ -x "$(command -v eza)" ]; then
     alias ls="eza"
@@ -195,7 +223,7 @@ if [ -x "$(command -v htop)" ]; then
     alias top="htop"
 fi
 
-alias claude-docker="~/.config/claude-docker/rundocker.sh"
+alias claude-docker="$HOME/.config/claude-docker/rundocker.sh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
