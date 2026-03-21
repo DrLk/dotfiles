@@ -1,3 +1,5 @@
+vim.g.python3_host_prog = vim.fn.expand("~/.venv/bin/python")
+
 vim.g.did_load_filetypes = 1
 vim.g.formatoptions = "qrn1"
 vim.opt.showmode = false
