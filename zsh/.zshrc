@@ -78,7 +78,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(vi-mode fzf fzf-tab git gitfast zsh-syntax-highlighting zsh-autosuggestions command-not-found ubuntu thefuck dnf)
+plugins=(vi-mode fzf fzf-tab gitfast zsh-syntax-highlighting zsh-autosuggestions command-not-found ubuntu thefuck dnf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,10 +120,10 @@ if [ -x "$(command -v pgrep)" ]; then
 fi
 
 myfd() {
-   if [ -f /dev/stdout ]; then
-     fd --regex --hidden --no-ignore --ignore-case --color=never "$@"
+   if [ -t 1 ]; then
+     command fd --regex --hidden --no-ignore --ignore-case --color=always "$@"
    else
-     fd --regex --hidden --no-ignore --ignore-case --color=always "$@"
+     command fd --regex --hidden --no-ignore --ignore-case --color=never "$@"
    fi
 }
 
@@ -134,10 +134,10 @@ else
 fi
 
 myrg() {
-   if [ -f /dev/stdout ]; then
-     rg --no-heading --color=never "$@"
+   if [ -t 1 ]; then
+     command rg --no-heading --color=always "$@"
    else
-     rg --no-heading --color=always "$@"
+     command rg --no-heading --color=never "$@"
    fi
 }
 
@@ -146,10 +146,10 @@ if [ -x "$(command -v rg)" ]; then
 fi
 
 mygrep() {
-   if [ -f /dev/stdout ]; then
-      grep --color=never "$@"
+   if [ -t 1 ]; then
+      command grep --color=always "$@"
    else
-      grep --color=always "$@"
+      command grep --color=never "$@"
    fi
 }
 
@@ -170,9 +170,7 @@ if [ -x "$(command -v nnn)" ]; then
     alias nnn="nnn -dTt"
 fi
 
-if [ -x "$(command -v icat)" ]; then
-    alias icat="kitten icat"
-fi
+[ "$TERM" = "xterm-kitty" ] && alias icat="kitten icat"
 
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
