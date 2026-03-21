@@ -135,12 +135,6 @@ myfd() {
    fi
 }
 
-if [ -x "$(command -v fd)" ]; then
-    alias fd="myfd"
-else
-    alias fd="find . | rg"
-fi
-
 myrg() {
    if _color_output; then
      command rg --no-heading --color=always "$@"
@@ -149,10 +143,6 @@ myrg() {
    fi
 }
 
-if [ -x "$(command -v rg)" ]; then
-    alias rg="myrg"
-fi
-
 mygrep() {
    if _color_output; then
       command grep --color=always "$@"
@@ -160,10 +150,6 @@ mygrep() {
       command grep --color=never "$@" | colorstrip
    fi
 }
-
-if [ -x "$(command -v grep)" ]; then
-    alias grep="mygrep"
-fi
 
 myhead() {
    if _color_output; then
@@ -237,6 +223,11 @@ unzipall () {
 
 setopt globdots
 zstyle ':completion:*' special-dirs false
+
+# Override oh-my-zsh aliases that conflict with our wrappers
+alias grep="mygrep"
+alias rg="myrg"
+alias fd="myfd"
 
 # Sync ~/.claude config files from ~/.config/claude via symlinks
 () {
