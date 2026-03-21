@@ -156,6 +156,7 @@ lspconfig.clangd.setup({
         "--header-insertion=iwyu",
         "--pch-storage=memory",
         "--suggest-missing-includes",
+        "--log=error",
         -- "--offset-encoding=utf-16",
         -- "--compile-commands-dir=./"
     },
