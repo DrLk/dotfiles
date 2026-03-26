@@ -127,9 +127,9 @@ _color_output() {
 
 myfd() {
    if _color_output; then
-     command fd --regex --hidden --no-ignore --ignore-case --color=always "$@"
+     command fd --regex --color=always "$@" | command grep --color=always -iE "${args[-1]}|$"
    else
-     command fd --regex --hidden --no-ignore --ignore-case --color=never "$@"
+     command fd --regex --color=never "$@" | colorstrip
    fi
 }
 
