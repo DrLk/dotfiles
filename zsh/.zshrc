@@ -168,6 +168,7 @@ mytail() {
 }
 
 alias tail="mytail"
+alias date='date +"%Y-%m-%d %H:%M:%S"'
 
 if [ -x "$(command -v eza)" ]; then
     alias ls="eza"
