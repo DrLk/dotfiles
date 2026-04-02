@@ -9,7 +9,6 @@ local on_attach = function(client, bufnr)
             bufnr = bufnr,
             async = true,
         })
-        -- vim.lsp.buf.formatting_sync()
     end, {})
 
     vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
@@ -19,49 +18,6 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>", { silent = true, desc = "Format modifications" })
 end
-local lspconfig = require("lspconfig")
--- lspconfig.pylsp.setup({
---     on_attach = on_attach,
---     capabilities = capabilities,
---     settings = {
---         pylsp = {
---             plugins = {
---                 -- formatter options
---                 black = { enabled = false },
---                 autopep8 = {
---                     enabled = false,
---                 },
---                 yapf = {
---                     enabled = false,
---                     -- args = "--style='{ based_on_style: pep8, column_limit: 120 }'"
---                 },
---                 -- linter options
---                 pylint = { enabled = false, executable = "pylint" },
---                 ruff = { enabled = true },
---                 pyflakes = { enabled = false },
---                 mccabe = { enabled = false},
---                 pycodestyle = {
---                     enabled = true,
---                     maxLineLength = 100
---                 },
---                 -- type checker
---                 pylsp_mypy = {
---                     enabled = false,
---                     -- overrides = { "--python-executable", py_path, true },
---                     report_progress = false,
---                     live_mode = false
---                 },
---                 -- auto-completion options
---                 jedi_completion = {
---                     enabled = false,
---                     fuzzy = true,
---                 },
---                 -- import sorting
---                 isort = { enabled = true },
---             },
---         },
---     },
--- })
 
 vim.g.ale_echo_cursor = 0
 vim.g.ale_linters = {
@@ -76,72 +32,32 @@ null_ls.setup({
         null_ls.builtins.formatting.yapf.with({
             extra_args = { "--style", "{based_on_style: pep8, column_limit: 120}" },
         }),
-        -- null_ls.builtins.diagnostics.pylint
     },
 })
 
--- lspconfig.pyright.setup(
---     {
---         settings = {
---             pyright = {
---                 autoImportCompletion = true,
---             },
---             python = {
---                 analysis =
---                 {
---                     autoSearchPaths = true,
---                     diagnosticMode = 'openFilesOnly',
---                     useLibraryCodeForTypes = true,
---                     typeCheckingMode = 'off'
---                 }
---             }
---         }
---     })
-
-lspconfig.basedpyright.setup(
-    {
-        settings = {
-            python = {
-                pythonPath = home .. "/.venv/bin/python",
-                -- venvPath = home .. "/.venv",
-                -- venv = ".venv"
-            },
-            basedpyright = {
-                autoImportCompletion = true,
-                analysis =
-                {
-                    autoSearchPaths = true,
-                    diagnosticMode = 'openFilesOnly',
-                    useLibraryCodeForTypes = true,
-                    typeCheckingMode = 'off'
-                },
-            },
-        }
-    })
-
--- Function to get the path to clangd from Mason
-local function get_clangd_path()
-    local mason_registry = require("mason-registry")
-    local ok, pkg = pcall(mason_registry.get_package, "clangd")
-    if not ok or not pkg then
-        return "clangd"
-    end
-    local clangd_root = pkg:get_install_path()
-    local bin_path = ""
-    pkg:get_receipt():if_present(
-        ---@param receipt InstallReceipt
-        function(receipt)
-            bin_path = receipt.links.bin["clangd"]
-        end
-    )
-    if bin_path == "" then
-        return "clangd"
-    end
-    return vim.fn.resolve(clangd_root .. "/" .. bin_path)
-end
-lspconfig.clangd.setup({
-    on_attach = on_attach,
+-- Set shared capabilities and on_attach for all servers
+vim.lsp.config('*', {
     capabilities = capabilities,
+})
+
+vim.lsp.config('basedpyright', {
+    settings = {
+        python = {
+            pythonPath = home .. "/.venv/bin/python",
+        },
+        basedpyright = {
+            autoImportCompletion = true,
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = 'off',
+            },
+        },
+    },
+})
+
+vim.lsp.config('clangd', {
     cmd = {
         "clangd",
         "--background-index",
@@ -157,23 +73,18 @@ lspconfig.clangd.setup({
         "--pch-storage=memory",
         "--suggest-missing-includes",
         "--log=error",
-        -- "--offset-encoding=utf-16",
-        -- "--compile-commands-dir=./"
     },
 })
-lspconfig.neocmake.setup({
+
+vim.lsp.config('neocmake', {
     cmd = { "neocmakelsp", "stdio" },
-    on_attach = on_attach,
-    capabilities = capabilities,
 })
-lspconfig.lua_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
+
+vim.lsp.config('lua_ls', {
     settings = {
         Lua = {
             runtime = {
-                version = 'LuaJIT'
-                -- path = runtime_path,
+                version = 'LuaJIT',
             },
             workspace = {
                 library = {
@@ -184,29 +95,38 @@ lspconfig.lua_ls.setup({
                     ["~/.local/share/nvim/lazy"] = true,
                 },
             },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                -- globals = { "vim" },
-            },
         },
     },
 })
-lspconfig.bashls.setup({
-    capabilities = capabilities,
-    filetypes = { 'sh', 'zsh', }
+
+vim.lsp.config('bashls', {
+    filetypes = { 'sh', 'zsh' },
 })
--- lspconfig.stylua.setup({})
-lspconfig.cssls.setup({ capabilities = capabilities })
-lspconfig.golangci_lint_ls.setup({})
-lspconfig.rust_analyzer.setup({
+
+vim.lsp.config('cssls', {})
+
+vim.lsp.config('golangci_lint_ls', {})
+
+vim.lsp.config('rust_analyzer', {
     settings = {
         ["rust-analyzer"] = {
             diagnostics = { enable = true, experimental = { enable = true } },
         },
     },
 })
+
+vim.lsp.enable({
+    'basedpyright',
+    'clangd',
+    'neocmake',
+    'lua_ls',
+    'bashls',
+    'cssls',
+    'golangci_lint_ls',
+    'rust_analyzer',
+})
+
 -- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<leader>lD", vim.diagnostic.open_float)
 vim.keymap.set("n", "[d", function()
     vim.diagnostic.jump({ count = -1, float = true })
@@ -255,27 +175,21 @@ end, { nargs = 1 })
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        on_attach(client, ev.buf)
+
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
         local opts = { buffer = ev.buf }
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, opts)
-        -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
         vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
-        -- vim.keymap
-        vim.keymap
-            .set('n', '<Leader>sa', vim.lsp.buf.add_workspace_folder, opts)
-        vim.keymap.set('n', '<Leader>sr', vim.lsp.buf.remove_workspace_folder,
-            opts)
+        vim.keymap.set('n', '<Leader>sa', vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set('n', '<Leader>sr', vim.lsp.buf.remove_workspace_folder, opts)
         vim.keymap.set('n', '<Leader>sl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
         vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
         vim.keymap.set("n", "<Leader>lr", rename, opts)
         vim.keymap.set({ "n", "v" }, "<Leader>la", vim.lsp.buf.code_action, opts)
-        -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        -- vim.keymap.set("n", "<Leader>lf", function()
-        --     vim.lsp.buf.format({ async = true })
-        -- end, opts)
     end,
 })
