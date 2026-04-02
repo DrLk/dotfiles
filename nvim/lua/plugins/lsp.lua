@@ -22,6 +22,9 @@ end
 vim.g.ale_echo_cursor = 0
 vim.g.ale_linters = {
     python = { 'pycodestyle' },
+    c = {},
+    cpp = {},
+    cuda = {},
 }
 
 local home = vim.fn.expand("~")
@@ -66,12 +69,10 @@ vim.lsp.config('clangd', {
         "--clang-tidy",
         "--clang-tidy-checks=*",
         "--all-scopes-completion",
-        "--cross-file-rename",
         "--completion-style=detailed",
         "--header-insertion-decorators",
         "--header-insertion=iwyu",
         "--pch-storage=memory",
-        "--suggest-missing-includes",
         "--log=error",
     },
 })
