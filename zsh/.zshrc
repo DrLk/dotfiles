@@ -223,6 +223,30 @@ unzipall () {
     pids=(); for z in *.zip; do UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE unzip "$z" -d "${z%.*}" &; pids+=($!); done; for pid in "${pids[@]}"; do wait "${pid}"; done
 }
 
+llvm-configure() {
+    cmake -S llvm -B build -G Ninja \
+        -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lldb" \
+        -DLLVM_ENABLE_RUNTIMES="compiler-rt" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DLLVM_USE_LINKER=mold \
+        -DCMAKE_INSTALL_PREFIX="$HOME/.local" \
+        -DLLDB_ENABLE_PYTHON=ON \
+        -DPython3_EXECUTABLE=/usr/bin/python3.14 \
+        -DPython3_INCLUDE_DIR=/usr/include/python3.14 \
+        -DPython3_LIBRARY=/usr/lib64/libpython3.14.so \
+        -DLLVM_TARGETS_TO_BUILD="X86" \
+        -DLLVM_ENABLE_LTO=Thin \
+        -DLLVM_ENABLE_ASSERTIONS=OFF \
+        -DLLVM_ENABLE_RTTI=ON \
+        -DLLVM_INCLUDE_TESTS=OFF \
+        -DLLVM_INCLUDE_BENCHMARKS=OFF \
+        -DLLVM_INCLUDE_DOCS=OFF \
+        -DLLVM_INCLUDE_EXAMPLES=OFF \
+        -DLLVM_BUILD_TOOLS=ON \
+        -DCLANG_ENABLE_ARCMT=OFF \
+        -DLLVM_BINUTILS_INCDIR=/usr/include
+}
+
 setopt globdots
 zstyle ':completion:*' special-dirs false
 
