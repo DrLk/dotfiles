@@ -1,5 +1,9 @@
 local dap = require("dap")
 
+require("persistent-breakpoints").setup({
+    load_breakpoints_event = { "BufReadPost" },
+})
+
 vim.keymap.set("n", "<leader>i", function()
     dap.down()
 end, { desc = "Go down in current stacktrace without stepping." })
@@ -25,15 +29,10 @@ end, { desc = "Step into" })
 vim.keymap.set("n", "<F12>", function()
     dap.step_out()
 end, { desc = "Step out" })
-vim.keymap.set("n", "<Leader>b", function()
-    dap.toggle_breakpoint()
-end, { desc = "Toggle breakpoint" })
-vim.keymap.set("n", "<Leader>B", function()
-    dap.set_breakpoint()
-end, { desc = "Set breakpoint" })
-vim.keymap.set("n", "<Leader>lp", function()
-    dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end, { desc = "Log point message breakpoint" })
+local pb = require("persistent-breakpoints.api")
+vim.keymap.set("n", "<Leader>b", pb.toggle_breakpoint, { desc = "Toggle breakpoint" })
+vim.keymap.set("n", "<Leader>B", pb.set_conditional_breakpoint, { desc = "Set conditional breakpoint" })
+vim.keymap.set("n", "<Leader>lp", pb.set_log_point, { desc = "Log point" })
 vim.keymap.set("n", "<Leader>dr", function()
     require("dap").repl.open()
 end, { desc = "Open repl" })
@@ -200,93 +199,24 @@ dap.configurations.python = {
         end,
     }
 }
-require("dapui").setup({
-    icons = { expanded = "", collapsed = "", current_frame = "" },
-    mappings = {
-        -- Use a table to apply multiple mappings
-        expand = { "<CR>", "<2-LeftMouse>" },
-        open = "o",
-        remove = "d",
-        edit = "e",
-        repl = "r",
-        toggle = "t",
-    },
-    element_mappings = {},
-    expand_lines = vim.fn.has("nvim-0.7") == 1,
-    force_buffers = true,
-    layouts = {
-        {
-            -- You can change the order of elements in the sidebar
-            elements = {
-                -- Provide IDs as strings or tables with "id" and "size" keys
-                {
-                    id = "scopes",
-                    size = 0.25, -- Can be float or integer > 1
-                },
-                { id = "breakpoints", size = 0.25 },
-                { id = "stacks",      size = 0.25 },
-                { id = "watches",     size = 0.25 },
-            },
-            size = 40,
-            position = "left", -- Can be "left" or "right"
-        },
-        {
-            elements = {
-                "repl",
-            },
-            size = 1,
-            position = "top", -- Can be "bottom" or "top"
-        },
-        {
-            elements = {
-                "console",
-            },
-            size = 20,
-            position = "bottom", -- Can be "bottom" or "top"
+require("dap-view").setup({
+    winbar = {
+        sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl" },
+        default_section = "scopes",
+        controls = {
+            enabled = true,
         },
     },
-    floating = {
-        max_height = nil,
-        max_width = nil,
-        border = "single",
-        mappings = {
-            ["close"] = { "q", "<Esc>" },
+    windows = {
+        size = 0.25,
+        position = "above",
+        terminal = {
+            size = 0.5,
+            position = "below",
         },
     },
-    controls = {
-        enabled = vim.fn.exists("+winbar") == 1,
-        element = "repl",
-        icons = {
-            pause = "",
-            play = "",
-            step_into = "",
-            step_over = "",
-            step_out = "",
-            step_back = "",
-            run_last = "",
-            terminate = "",
-            disconnect = "",
-        },
-    },
-    render = {
-        max_type_length = 0,  -- Can be integer or nil.
-        max_value_lines = 100, -- Can be integer or nil.
-        indent = 1,
-    },
+    auto_toggle = true,
 })
-
-local dapui = require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
-    dapui.open()
-    local console_bufnr = dapui.elements.console.buffer()
-    vim.bo[console_bufnr].filetype = "log"
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
-end
 
 require("nvim-dap-virtual-text").setup {
     enabled = true,                        -- enable this plugin (the default)

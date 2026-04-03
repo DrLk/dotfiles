@@ -64,9 +64,9 @@ require("lazy").setup({
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            { "nvim-neotest/nvim-nio" },
-            { "rcarriga/nvim-dap-ui", },
-            { "theHamsta/nvim-dap-virtual-text", }
+            { "igorlfs/nvim-dap-view", version = "1.*" },
+            { "theHamsta/nvim-dap-virtual-text", },
+            { "Weissle/persistent-breakpoints.nvim" }
         }
     },
     { "Civitasv/cmake-tools.nvim",                   dependencies = { "nvim-lua/plenary.nvim" } },
