@@ -28,10 +28,10 @@
       "Bash(clang-tidy *)"
     ]
   },
+  "model": "sonnet",
   "enabledPlugins": {
     "github@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true
-  },
-  "model": "sonnet[1m]"
+  }
 }
