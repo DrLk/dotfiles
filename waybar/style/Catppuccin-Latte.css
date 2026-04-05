@@ -53,6 +53,9 @@ window#waybar.hidden {
 #disk,
 #idle_inhibitor,
 #keyboard-state,
+#language,
+#hyprland-language,
+#sway-language,
 #memory,
 #mode,
 #mpris,
@@ -159,7 +162,10 @@ window#waybar.hidden {
   -gtk-icon-effect: highlight;
 }
 
-#keyboard-state {
+#keyboard-state,
+#language,
+#hyprland-language,
+#sway-language {
   	color: @flamingo;
 }
 

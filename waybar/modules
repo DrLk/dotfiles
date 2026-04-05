@@ -256,14 +256,6 @@
     "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
 },
     
-"hyprland/language": {
-    "format": "Lang: {}",
-    "format-en": "US",
-    "format-tr": "Korea",
-    "keyboard-name": "at-translated-set-2-keyboard",
-    "on-click": "hyprctl switchxkblayout $SET_KB next"
-},
-    
 "hyprland/submap": {
     "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
     "tooltip": false,
@@ -488,10 +480,11 @@
 },
 
 "hyprland/language": {
-    "format": "{}",
+    "format": " {}",
     "min-length": 5,
     "format-en": "🇺🇸",
-    "format-ru": "🇩🇪",
+    "format-pl": "🇵🇱",
+    "format-ru": "🇷🇺",
 },
     
 "custom/light_dark": {
