@@ -11,12 +11,14 @@ local on_attach = function(client, bufnr)
         })
     end, {})
 
-    vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
-        local lsp_format_modifications = require("lsp-format-modifications")
-        lsp_format_modifications.format_modifications(client, bufnr)
-    end, {})
+    if client.supports_method("textDocument/rangeFormatting") then
+        vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
+            local lsp_format_modifications = require("lsp-format-modifications")
+            lsp_format_modifications.format_modifications(client, bufnr)
+        end, {})
 
-    vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>", { silent = true, desc = "Format modifications" })
+        vim.keymap.set("n", "<Leader>lf", ":FormatModifications<CR>", { silent = true, buffer = bufnr, desc = "Format modifications" })
+    end
 end
 
 vim.g.ale_echo_cursor = 0
