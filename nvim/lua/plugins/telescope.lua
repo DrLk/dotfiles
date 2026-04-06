@@ -46,5 +46,11 @@ telescope.setup {
             },
             i = { ["<c-t>"] = trouble.open_with_trouble },
         }
+    },
+    extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {}
+        }
     }
 }
+telescope.load_extension("ui-select")

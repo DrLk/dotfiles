@@ -126,6 +126,13 @@ dap.configurations.cpp = {
         showDisassembly = "never",
         args = {},
     },
+    {
+        name = "Attach to process",
+        type = "lldbdap",
+        request = "attach",
+        pid = require("dap.utils").pick_process,
+        cwd = "${workspaceFolder}",
+    },
 }
 
 dap.configurations.c = {
@@ -158,6 +165,13 @@ dap.configurations.c = {
         console = "integratedTerminal",
         showDisassembly = "never",
         args = {},
+    },
+    {
+        name = "Attach to process",
+        type = "lldbdap",
+        request = "attach",
+        pid = require("dap.utils").pick_process,
+        cwd = "${workspaceFolder}",
     },
 }
 
@@ -197,7 +211,13 @@ dap.configurations.python = {
             local input = vim.fn.input("Args: ")
             return vim.split(input, " ", { trimempty = true })
         end,
-    }
+    },
+    {
+        type = "python",
+        request = "attach",
+        name = "Attach to process",
+        processId = require("dap.utils").pick_process,
+    },
 }
 require("dap-view").setup({
     winbar = {
