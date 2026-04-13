@@ -11,7 +11,7 @@ local on_attach = function(client, bufnr)
         })
     end, {})
 
-    if client.supports_method("textDocument/rangeFormatting") then
+    if client:supports_method("textDocument/rangeFormatting") then
         vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
             local lsp_format_modifications = require("lsp-format-modifications")
             lsp_format_modifications.format_modifications(client, bufnr)
