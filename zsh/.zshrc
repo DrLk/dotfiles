@@ -225,7 +225,7 @@ unzipall () {
 
 llvm-configure() {
     cmake -S llvm -B build -G Ninja \
-        -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lldb" \
+        -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lldb;lld" \
         -DLLVM_ENABLE_RUNTIMES="compiler-rt" \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_USE_LINKER=mold \
