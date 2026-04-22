@@ -112,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH=$HOME/.local/bin:$PATH
+[[ ":$PATH:" != *":$HOME/.cargo/bin:"* ]] && export PATH=$HOME/.cargo/bin:$PATH
 
 if [ -x "$(command -v pgrep)" ]; then
     alias pgrep="pgrep -a"
