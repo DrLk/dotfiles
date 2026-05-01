@@ -22,11 +22,6 @@ Kvantum/kvantum.kvconfig
 !sway/**/*
 !wlogout
 !wlogout/**/*
-!claude
-!claude/settings.json
-!claude/plugins
-!claude/plugins/installed_plugins.json
-!claude/plugins/known_marketplaces.json
 !claude-docker
 !claude-docker/**/*
 !tmux
