@@ -1,0 +1,7 @@
+[user]
+	email = andrew@resilio.com
+	name = Andrew Ermakovich
+	signingkey = ~/.ssh/id_ed25519.pub
+
+[core]
+	sshCommand = ssh -i ~/.ssh/id_ed25519

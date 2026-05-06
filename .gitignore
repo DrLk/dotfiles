@@ -26,4 +26,6 @@ Kvantum/kvantum.kvconfig
 !claude-docker/**/*
 !tmux
 !tmux/**/*
+!git
+!git/**/*
 ~thefuck/settings.py
