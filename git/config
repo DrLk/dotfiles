@@ -8,6 +8,7 @@
 
 [delta]
     navigate = true    # use n and N to move between diff sections
+    hyperlinks = true
 
     # delta detects terminal colors automatically; set one of these to disable auto-detection
     # dark = true
@@ -37,6 +38,24 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
+	sort = -version:refname
+
+[branch]
+	sort = -committerdate
+
+[push]
+	autoSetupRemote = true
+
+[rebase]
+	autosquash = true
+	autostash = true
+	updateRefs = true
+
+[rerere]
+	enabled = true
+
+[init]
+	defaultBranch = main
 
 [includeIf "hasconfig:remote.*.url:git@github.com:bt-sync/**"]
 	path = ~/.config/git/config.work
