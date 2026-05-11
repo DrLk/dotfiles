@@ -20,11 +20,13 @@ if [ "$HYPRGAMEMODE" = 1 ] ; then
     notify-send -e -u low -i "$notif" "gamemode enabled. All animations off"
     exit
 else
-	swww init && swww img "$HOME/.config/rofi/.current_wallpaper"
-	sleep 0.1
-	${SCRIPTSDIR}/PywalSwww.sh
-	sleep 0.5
-	${SCRIPTSDIR}/Refresh.sh	 
+	pgrep -x awww-daemon >/dev/null || awww-daemon &
+	sleep 0.3
+	monitor=$(hyprctl -j monitors | jq -r '.[0].name')
+	wallpaper=$(tr '\0' '\n' < "$HOME/.cache/swww/$monitor" 2>/dev/null | grep -m1 '^/')
+	[ -n "$wallpaper" ] && awww img "$wallpaper"
+	sleep 0.3
+	${SCRIPTSDIR}/Refresh.sh
     notify-send -e -u normal -i "$notif" "gamemode disabled. All animations normal"
     exit
 fi
