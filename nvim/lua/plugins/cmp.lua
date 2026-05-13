@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd("FileType", {
     desc = "disable autocomplete for 'log' files",
     pattern = 'log',
     callback = function()
-        cmp.setup {
+        cmp.setup.buffer {
             completion = {
                 autocomplete = false
             }

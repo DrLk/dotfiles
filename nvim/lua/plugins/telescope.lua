@@ -7,8 +7,10 @@ vim.keymap.set('n', '<leader>ff', function()
 end, { noremap = true, silent = true, desc = "Find files" })
 
 local conf = require('telescope.config').values
-vim.keymap.set('n', '<leader>fw', builtin.live_grep,
-    { vimgrep_arguments = table.insert(conf.vimgrep_arguments, '--fixed-strings'), })
+local fixed_vimgrep_arguments = vim.list_extend(vim.deepcopy(conf.vimgrep_arguments), { '--fixed-strings' })
+vim.keymap.set('n', '<leader>fw', function()
+    builtin.live_grep({ vimgrep_arguments = fixed_vimgrep_arguments })
+end, { noremap = true, silent = true, desc = "Live grep (fixed strings)" })
 
 vim.keymap.set('n', '<leader>fb', function()
     builtin.buffers({ initial_mode = "normal" })

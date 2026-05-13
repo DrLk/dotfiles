@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd('FileType', {
     desc = 'Close hover window',
     pattern = 'dap-float',
     callback = function(opts)
-        vim.keymap.set("n", "q", ":close!<CR>", { silent = true, desc = "CLose hover window" })
+        vim.keymap.set("n", "q", ":close!<CR>", { buffer = opts.buf, silent = true, desc = "Close hover window" })
     end,
 })
 -- vim.keymap.set("n", "q", function()
