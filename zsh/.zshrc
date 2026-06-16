@@ -248,6 +248,18 @@ llvm-configure() {
         -DLLVM_BINUTILS_INCDIR=/usr/include
 }
 
+cleanweek() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: cleanweek <directory>"
+        return 1
+    fi
+    if [[ ! -d "$1" ]]; then
+        echo "Error: '$1' is not a directory"
+        return 1
+    fi
+    find "$1" -mindepth 1 -maxdepth 1 -mtime +14 -exec rm -rf {} +
+}
+
 setopt globdots
 zstyle ':completion:*' special-dirs false
 
