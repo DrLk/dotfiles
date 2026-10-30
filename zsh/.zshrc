@@ -229,7 +229,7 @@ llvm-configure() {
         -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lldb;lld" \
         -DLLVM_ENABLE_RUNTIMES="compiler-rt" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DLLVM_USE_LINKER=mold \
+        -DLLVM_USE_LINKER=lld \
         -DCMAKE_INSTALL_PREFIX="$HOME/.local" \
         -DLLDB_ENABLE_PYTHON=ON \
         -DPython3_EXECUTABLE=/usr/bin/python3.14 \
